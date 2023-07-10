@@ -1,5 +1,5 @@
 import { defineStore } from "pinia";
-import {fetchRecipes} from "@/api";
+import {fetchRecipes} from "../api.ts";
 
 export const recipesStore = defineStore("recipes", {
   state: () => ({

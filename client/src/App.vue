@@ -1,7 +1,3 @@
-<style>
-   @import "styles/style.css";
-</style>
-
 <template>
   <div id="app">
     <router-view />
