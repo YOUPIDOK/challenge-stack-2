@@ -4,6 +4,7 @@
 - [ ] Endpoints
 - [ ] BDD
 - [ ] A partir d’un référentiel d’ingrédients à modéliser vous-même
+- [ ] Tests unitaires
 ## CLient
 ### Mnimum
 - [ ] Page d'accueil
