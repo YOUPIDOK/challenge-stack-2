@@ -5,8 +5,9 @@
 ## Documentation
 - [Docuemntation server](./server/README.md)
 - [Documentation client](./client/README.md)
+- [MLD](https://dbdiagram.io/d/64aba71702bd1c4a5ec7084e)
 ## Docker
-- Mysql
+- Mongodb
 ## Installation
 ```shell
 docker-compose up
