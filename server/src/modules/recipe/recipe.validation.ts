@@ -1,13 +1,15 @@
 import Joi from 'joi';
 import { objectId } from '../validate/custom.validation';
 import { CreateRecipeBody, UpdateRecipeBody } from './recipe.interfaces';
+import { createIngredientBody } from '../ingredient/ingredient.validation';
+import { createStepBody } from '../step/step.validation';
 
 const createRecipeBody: Record<keyof CreateRecipeBody, any> = {
   title: Joi.string().required(),
   author: Joi.string().required(),
   publication_date: Joi.date().required(),
-  ingredients: Joi.array().required(),
-  steps: Joi.array().required(),
+  ingredients: Joi.array().items(Joi.object(createIngredientBody)).required(),
+  steps: Joi.array().items(Joi.object(createStepBody)).required(),
 };
 
 export const createRecipe = {
@@ -35,8 +37,8 @@ const updateRecipeBody: Record<keyof UpdateRecipeBody, any> = {
   title: Joi.string().required(),
   author: Joi.string().required(),
   publication_date: Joi.date().required(),
-  ingredients: Joi.array().required(),
-  steps: Joi.array().required(),
+  ingredients: Joi.array().items(Joi.object(createIngredientBody)),
+  steps: Joi.array().items(Joi.object(createStepBody)),
 };
 
 export const updateRecipe = {

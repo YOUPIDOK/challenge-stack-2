@@ -1,19 +1,14 @@
 import mongoose from 'mongoose';
 import toJSON from '../toJSON/toJSON';
-import paginate from '../paginate/paginate';
 import { IStepDoc, IStepModel } from './step.interfaces';
 
 const stepSchema = new mongoose.Schema<IStepDoc, IStepModel>(
   {
-    name: {
+    title: {
       type: String,
       required: true,
     },
-    quantity: {
-      type: Number,
-      required: true,
-    },
-    unit: {
+    description: {
       type: String,
       required: true,
     },
@@ -25,7 +20,6 @@ const stepSchema = new mongoose.Schema<IStepDoc, IStepModel>(
 
 // add plugin that converts mongoose to json
 stepSchema.plugin(toJSON);
-stepSchema.plugin(paginate);
 
 const Step = mongoose.model<IStepDoc, IStepModel>('Step', stepSchema);
 
