@@ -1,0 +1,7 @@
+version: '3.8'
+
+services:
+  mariadb:
+    extends:
+      file: ./compose/compose.mariadb.yml
+      service: mariadb
