@@ -1,7 +1,7 @@
 import { Model, Document } from 'mongoose';
 import { QueryResult } from '../paginate/paginate';
-import { IIngredientModel } from '../ingredient/ingredient.interfaces';
-import { IStepModel } from '../step/step.interfaces';
+import { IIngredientModel } from './ingredient/ingredient.interfaces';
+import { IStepModel } from './step/step.interfaces';
 
 export interface IRecipe {
   title: string;

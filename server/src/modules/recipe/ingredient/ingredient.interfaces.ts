@@ -1,5 +1,5 @@
 import { Model, Document } from 'mongoose';
-import { QueryResult } from '../paginate/paginate';
+import { QueryResult } from '../../paginate/paginate';
 
 export interface IIngredient {
   name: string;

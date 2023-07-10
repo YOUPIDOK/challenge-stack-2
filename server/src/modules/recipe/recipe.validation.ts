@@ -1,8 +1,8 @@
 import Joi from 'joi';
 import { objectId } from '../validate/custom.validation';
 import { CreateRecipeBody, UpdateRecipeBody } from './recipe.interfaces';
-import { createIngredientBody } from '../ingredient/ingredient.validation';
-import { createStepBody } from '../step/step.validation';
+import { createIngredientBody } from './ingredient/ingredient.validation';
+import { createStepBody } from './step/step.validation';
 
 const createRecipeBody: Record<keyof CreateRecipeBody, any> = {
   title: Joi.string().required(),

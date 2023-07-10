@@ -6,10 +6,6 @@ export const createStepBody: Record<keyof CreateStepBody, any> = {
   description: Joi.number().required(),
 };
 
-export const createStep = {
-  body: Joi.object().keys(createStepBody),
-};
-
 export const updateStepBody: Record<keyof UpdateStepBody, any> = {
   title: Joi.string(),
   description: Joi.number(),
