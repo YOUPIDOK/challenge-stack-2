@@ -7,8 +7,8 @@ const router: Router = express.Router();
 
 router
   .route('/')
-  .post(auth('manageRecipes'), validate(recipeValidation.createRecipe), recipeController.createRecipe)
-  .get(auth('getRecipes'), validate(recipeValidation.getRecipes), recipeController.getRecipes);
+  .post(validate(recipeValidation.createRecipe), recipeController.createRecipe)
+  .get(validate(recipeValidation.getRecipes), recipeController.getRecipes);
 
 router
   .route('/:recipeId')

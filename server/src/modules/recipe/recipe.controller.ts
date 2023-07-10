@@ -13,9 +13,9 @@ export const createRecipe = catchAsync(async (req: Request, res: Response) => {
 });
 
 export const getRecipes = catchAsync(async (req: Request, res: Response) => {
-  const filter = pick(req.query, ['name', 'role']);
+  // const filter = pick(req.query, ['name', 'role']);
   const options: IOptions = pick(req.query, ['sortBy', 'limit', 'page', 'projectBy']);
-  const result = await recipeService.queryRecipes(filter, options);
+  const result = await recipeService.queryRecipes({}, options);
   res.send(result);
 });
 

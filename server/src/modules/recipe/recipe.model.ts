@@ -2,8 +2,8 @@ import mongoose from 'mongoose';
 import toJSON from '../toJSON/toJSON';
 import paginate from '../paginate/paginate';
 import { IRecipeDoc, IRecipeModel } from './recipe.interfaces';
-import { Ingredient } from './ingredient';
-import { Step } from './step';
+import { ingredientSchema } from './ingredient/ingredient.model';
+import { stepSchema } from './step/step.model';
 
 const recipeSchema = new mongoose.Schema<IRecipeDoc, IRecipeModel>(
   {
@@ -22,11 +22,11 @@ const recipeSchema = new mongoose.Schema<IRecipeDoc, IRecipeModel>(
       required: true,
     },
     ingredients: {
-      type: [Ingredient],
+      type: [ingredientSchema],
       required: true,
     },
     steps: {
-      type: [Step],
+      type: [stepSchema],
       required: true,
     },
   },

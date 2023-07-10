@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 import toJSON from '../../toJSON/toJSON';
 import { IStepDoc, IStepModel } from './step.interfaces';
 
-const stepSchema = new mongoose.Schema<IStepDoc, IStepModel>(
+export const stepSchema = new mongoose.Schema<IStepDoc, IStepModel>(
   {
     title: {
       type: String,

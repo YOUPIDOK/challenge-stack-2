@@ -3,7 +3,7 @@ import toJSON from '../../toJSON/toJSON';
 import paginate from '../../paginate/paginate';
 import { IIngredientDoc, IIngredientModel } from './ingredient.interfaces';
 
-const ingredientSchema = new mongoose.Schema<IIngredientDoc, IIngredientModel>(
+export const ingredientSchema = new mongoose.Schema<IIngredientDoc, IIngredientModel>(
   {
     name: {
       type: String,
