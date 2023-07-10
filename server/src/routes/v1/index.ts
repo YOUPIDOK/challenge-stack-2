@@ -4,6 +4,7 @@ import docsRoute from './swagger.route';
 import userRoute from './user.route';
 import config from '../../config/config';
 import recipeRoute from './recipe.route';
+import nutritionRoute from './nutrition.route';
 
 const router = express.Router();
 
@@ -24,6 +25,10 @@ const defaultIRoute: IRoute[] = [
   {
     path: '/recipes',
     route: recipeRoute,
+  },
+  {
+    path: '/nutritions',
+    route: nutritionRoute,
   },
 ];
 
