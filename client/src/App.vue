@@ -1,19 +1,15 @@
 <template>
   <div id="app">
-    <Recipes />
+    <router-view />
   </div>
 </template>
 
 <script>
-import Recipes from './pages/Recipes.vue';
 import {recipesStore} from "./stores/recipes";
 import {onMounted} from "vue";
 
 export default {
   name: 'App',
-  components: {
-    Recipes,
-  },
 
   setup() {
     const store = recipesStore();
