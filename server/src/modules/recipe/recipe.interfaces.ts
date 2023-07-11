@@ -5,6 +5,7 @@ import { IStepModel } from './step/step.interfaces';
 
 export interface IRecipe {
   title: string;
+  description: string;
   author: string;
   publication_date: Date;
   ingredients: Array<IIngredientModel>;

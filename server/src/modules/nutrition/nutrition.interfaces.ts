@@ -2,6 +2,7 @@ import { Model, Document } from 'mongoose';
 
 export interface INutrition {
   name: string;
+  unit: string;
   water: number;
   energ_kcal: number;
   protein: number;

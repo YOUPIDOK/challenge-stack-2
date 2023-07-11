@@ -6,6 +6,7 @@ import { createStepBody } from './step/step.validation';
 
 const createRecipeBody: Record<keyof CreateRecipeBody, any> = {
   title: Joi.string().required(),
+  description: Joi.string(),
   author: Joi.string().required(),
   publication_date: Joi.date().required(),
   ingredients: Joi.array().items(Joi.object(createIngredientBody)).required(),
@@ -18,8 +19,7 @@ export const createRecipe = {
 
 export const getRecipes = {
   query: Joi.object().keys({
-    name: Joi.string(),
-    role: Joi.string(),
+    title: Joi.string(),
     sortBy: Joi.string(),
     projectBy: Joi.string(),
     limit: Joi.number().integer(),
@@ -34,9 +34,10 @@ export const getRecipe = {
 };
 
 const updateRecipeBody: Record<keyof UpdateRecipeBody, any> = {
-  title: Joi.string().required(),
-  author: Joi.string().required(),
-  publication_date: Joi.date().required(),
+  title: Joi.string(),
+  description: Joi.string(),
+  author: Joi.string(),
+  publication_date: Joi.date(),
   ingredients: Joi.array().items(Joi.object(createIngredientBody)),
   steps: Joi.array().items(Joi.object(createStepBody)),
 };

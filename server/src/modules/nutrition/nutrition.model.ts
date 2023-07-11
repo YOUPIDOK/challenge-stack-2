@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 import toJSON from '../toJSON/toJSON';
 import { INutritionDoc, INutritionModel } from './nutrition.interfaces';
 
-const nutritionSchema = new mongoose.Schema<INutritionDoc, INutritionModel>(
+export const nutritionSchema = new mongoose.Schema<INutritionDoc, INutritionModel>(
   {
     name: {
       type: String,
@@ -33,6 +33,13 @@ const nutritionSchema = new mongoose.Schema<INutritionDoc, INutritionModel>(
     timestamps: true,
   }
 );
+
+nutritionSchema.set('toObject', { virtuals: true });
+nutritionSchema.set('toJSON', { virtuals: true });
+
+nutritionSchema.virtual('unit').get(function () {
+  return this.water > 70 ? 'ml' : 'g';
+});
 
 nutritionSchema.index({ name: 'text' });
 
