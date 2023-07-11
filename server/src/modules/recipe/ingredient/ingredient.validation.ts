@@ -1,8 +1,9 @@
 import Joi from 'joi';
 import { CreateIngredientBody, UpdateIngredientBody } from './ingredient.interfaces';
+import { createNutritionBody } from '../../nutrition/nutrition.validation';
 
 export const createIngredientBody: Record<keyof CreateIngredientBody, any> = {
-  name: Joi.string().required(),
+  name: Joi.object().keys(createNutritionBody).required(),
   quantity: Joi.number().required(),
 };
 
