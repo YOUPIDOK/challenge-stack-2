@@ -13,14 +13,14 @@
       />
     </div>
 
-    <div
-      v-for="recipe in recipes"
-      :key="recipe.id"
-      class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-    >
-      <div class="bg-white rounded-lg shadow-md">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div
+        v-for="recipe in filteredRecipes"
+        :key="recipe.id"
+        class="bg-white rounded-lg shadow-md"
+      >
         <img
-          src="https://picsum.photos/200/300"
+          :src="recipe.image"
           alt="Recette 1"
           class="h-40 w-full object-cover rounded-t-lg"
         />
@@ -66,9 +66,9 @@ export default defineComponent({
     });
 
     return {
+      searchQuery,
       recipes,
       filteredRecipes,
-      searchQuery,
     };
   },
   async mounted() {
