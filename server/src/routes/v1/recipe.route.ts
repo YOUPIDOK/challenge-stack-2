@@ -13,8 +13,8 @@ router
 router
   .route('/:recipeId')
   .get(validate(recipeValidation.getRecipe), recipeController.getRecipe)
-  .patch(validate(recipeValidation.updateRecipe), recipeController.updateRecipe)
-  .delete(validate(recipeValidation.deleteRecipe), recipeController.deleteRecipe);
+  .patch(auth(), validate(recipeValidation.updateRecipe), recipeController.updateRecipe)
+  .delete(auth(), validate(recipeValidation.deleteRecipe), recipeController.deleteRecipe);
 
 export default router;
 
