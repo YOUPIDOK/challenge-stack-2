@@ -3,7 +3,7 @@ import { QueryResult } from '../../paginate/paginate';
 import { INutrition } from '@/modules/nutrition/nutrition.interfaces';
 
 export interface IIngredient {
-  name: INutrition;
+  nutrition: INutrition;
   quantity: number;
 }
 

@@ -1,17 +1,17 @@
 <template>
-  <RecipeForm/>
+  <RecipeForm />
 </template>
 
-<script>
-import { defineComponent } from 'vue';
+<script lang="ts">
+import { defineComponent } from "vue";
 import RecipeForm from "../components/RecipeForm.vue";
-export default defineComponent({
-  name: 'NewRecipe',
-  components: {RecipeForm},
-  setup() {
-    return {
 
-    };
-  },
+
+export default defineComponent({
+    name: "NewRecipe",
+    components: { RecipeForm },
+    setup() {
+        return {};
+    },
 });
 </script>

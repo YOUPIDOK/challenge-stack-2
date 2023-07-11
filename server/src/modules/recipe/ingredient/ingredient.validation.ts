@@ -3,11 +3,11 @@ import { CreateIngredientBody, UpdateIngredientBody } from './ingredient.interfa
 import { createNutritionBody } from '../../nutrition/nutrition.validation';
 
 export const createIngredientBody: Record<keyof CreateIngredientBody, any> = {
-  name: Joi.object().keys(createNutritionBody).required(),
+  nutrition: Joi.object().keys(createNutritionBody).required(),
   quantity: Joi.number().required(),
 };
 
 export const updateIngredientBody: Record<keyof UpdateIngredientBody, any> = {
-  name: Joi.string(),
+  nutrition: Joi.object().keys(createNutritionBody),
   quantity: Joi.number(),
 };

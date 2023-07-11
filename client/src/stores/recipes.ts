@@ -1,5 +1,5 @@
 import { defineStore } from "pinia";
-import {IIngredientModel} from "../models/recipe/ingredient/ingredient.interfaces.ts";
+import {IIngredientModel} from "../models/recipe/ingredient/ingredient.ts";
 export const recipesStore = defineStore("recipes", {
   state: () => ({
     recipes: [] as Array<IIngredientModel>,

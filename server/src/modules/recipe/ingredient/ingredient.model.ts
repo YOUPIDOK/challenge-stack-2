@@ -6,7 +6,7 @@ import { nutritionSchema } from '../../nutrition/nutrition.model';
 
 export const ingredientSchema = new mongoose.Schema<IIngredientDoc, IIngredientModel>(
   {
-    name: {
+    nutrition: {
       type: nutritionSchema,
       required: true,
     },
