@@ -1,12 +1,13 @@
 import express, { Router } from 'express';
 import { validate } from '../../modules/validate';
 import { recipeController, recipeValidation } from '../../modules/recipe';
+import { auth } from '../../modules/auth';
 
 const router: Router = express.Router();
 
 router
   .route('/')
-  .post(validate(recipeValidation.createRecipe), recipeController.createRecipe)
+  .post(auth(), validate(recipeValidation.createRecipe), recipeController.createRecipe)
   .get(validate(recipeValidation.getRecipes), recipeController.getRecipes);
 
 router

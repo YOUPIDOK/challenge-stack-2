@@ -50,7 +50,6 @@ import { IRecipe } from "../models/recipe/recipe";
 export default defineComponent({
   name: "Recipes",
   setup() {
-    // const store = recipesStore();
     const searchQuery = ref("");
     const recipes = ref<IRecipe[]>([]);
 
