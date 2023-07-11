@@ -30,11 +30,9 @@
           </h3>
           <p class="text-gray-600 mb-4">{{ recipe.description }}</p>
           <div class="flex justify-between items-center">
-            <a
-              href="#"
-              class="bg-blue-500 text-white hover:bg-blue-600 text-sm font-bold py-2 px-4 rounded-full"
-              >Voir la recette</a
-            >
+            <router-link :to="{ name: 'Recipe', params: {id: recipe.id} }"
+                         class="bg-blue-500 text-white hover:bg-blue-600 text-sm font-bold py-2 px-4 rounded-full"
+            >Voir la recette</router-link>
             <!--            <span class="text-gray-500">Calories : 500</span>-->
           </div>
         </div>
