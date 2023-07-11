@@ -1,5 +1,5 @@
 <template>
-  <div class="container mx-auto">
+  <div class="container mx-auto mt-10">
     <h2 class="text-3xl text-gray-800 font-bold mb-6">
       Découvrez nos recettes
     </h2>
@@ -20,7 +20,7 @@
     >
       <div class="bg-white rounded-lg shadow-md">
         <img
-          src="image-recette1.jpg"
+          src="https://picsum.photos/200/300"
           alt="Recette 1"
           class="h-40 w-full object-cover rounded-t-lg"
         />
