@@ -34,22 +34,22 @@
           <label class="block text-gray-700 font-bold mb-2">Ingrédients :</label>
           <div id="ingredients" >
             <div class="mb-2 flex" v-for="(ingredient, index) in recipe.ingredients" :key="index">
-              <Combobox as="div" v-model="recipe.ingredients[index].ingredient">
+              <Combobox as="div" v-model="recipe.ingredients[index].nutrition">
                 <div class="relative">
                   <ComboboxInput class="px-4 py-2  border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
-                                 @change="query = $event.target.value" :display-value="(ingredient) => ingredient?.name"
-                                 :placeholder="selectedIngredient ? '' : 'Ingrédient'"
+                                 @change="query = $event.target.value" :display-value="(nutrition) => nutrition?.name"
+                                 :placeholder="selectedNutrition ? '' : 'Ingrédient'"
                                  required
                   />
                   <ComboboxButton class="absolute inset-y-0 right-0 flex items-center rounded-r-md px-2 focus:outline-none">
                     <ChevronUpDownIcon class="h-5 w-5 text-gray-400" aria-hidden="true" />
                   </ComboboxButton>
 
-                  <ComboboxOptions v-if="filteredIngredients.length > 0" class="absolute z-10 mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
-                    <ComboboxOption v-for="ingredient in filteredIngredients" :key="ingredient.id" :value="ingredient" as="template" v-slot="{ active, selected }">
+                  <ComboboxOptions v-if="filteredNutritions.length > 0" class="absolute z-10 mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
+                    <ComboboxOption v-for="nutrition in filteredNutritions" :key="nutrition.id" :value="nutrition" as="template" v-slot="{ active, selected }">
                       <li :class="['relative cursor-default select-none py-2 pl-3 pr-9', active ? 'bg-indigo-600 text-white' : 'text-gray-900']">
                         <span :class="['block truncate', selected && 'font-semibold']">
-                          {{ ingredient.name }}
+                          {{ nutrition.name }}
                         </span>
                         <span v-if="selected" :class="['absolute inset-y-0 right-0 flex items-center pr-4', active ? 'text-white' : 'text-indigo-600']">
                           <CheckIcon class="h-5 w-5" aria-hidden="true" />
@@ -69,13 +69,13 @@
     </div>
 
     <div class="flex justify-center">
-      <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-1/2" type="submit">{{ isCreateMod ? "Créer" : "Modifier" }}</button>
+      <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-1/2" type="submit">{{ isCreateMod ? "Créer" : "Modifier" }} ({{ kcal }}Kcal)</button>
     </div>
   </form>
 </template>
 
 <script>
-import {computed, ref, watch} from 'vue'
+import {ref, watch} from 'vue'
 import { CheckIcon, ChevronUpDownIcon } from '@heroicons/vue/20/solid'
 
 import {
@@ -88,6 +88,7 @@ import {
 } from '@headlessui/vue'
 import {searchIngredients} from '../api/ingredientApi';
 import {createRecipe} from "../api/recipeApi";
+import {getKcal} from '../services/recipeService';
 export default {
   name: 'RecipeForm',
   components: {ComboboxLabel, Combobox, ComboboxInput, ComboboxButton, ComboboxOptions, ComboboxOption, CheckIcon, ChevronUpDownIcon},
@@ -110,11 +111,11 @@ export default {
       steps: [],
     };
     const query = ref('');
-    const selectedIngredient = ref(null);
-    let filteredIngredients = ref([]);
+    const selectedNutrition = ref(null);
+    let filteredNutritions = ref([]);
 
     watch(query, async (newQuery) => {
-      filteredIngredients.value = await searchIngredients(newQuery);
+      filteredNutritions.value = await searchIngredients(newQuery);
     })
 
     const recipe = ref(props.isCreateMod ?
@@ -125,21 +126,18 @@ export default {
 
     return {
       query,
-      selectedIngredient,
-      filteredIngredients,
+      selectedNutrition,
+      filteredNutritions,
       recipe,
       defaultRecipe
     };
   },
-  methods: {
-    defaultRecipe() {
-      return {
-        title: "",
-        description: "",
-        ingredients: [],
-        steps: [],
-      }
+  computed: {
+    kcal() {
+      return getKcal(this.recipe);
     },
+  },
+  methods: {
     handleSubmit() {
       // TODO : Vérification de données
       // TODO : Envoi de la requête
@@ -152,7 +150,7 @@ export default {
       this.recipe = this.defaultRecipe;
     },
     addIngredient() {
-      this.recipe.ingredients.push({ingredient: {}, quantity: ""});
+      this.recipe.ingredients.push({nutrition: {energ_kcal: 0}, quantity: 1});
     },
     addStep() {
       this.recipe.steps.push({title: "", description: ""});

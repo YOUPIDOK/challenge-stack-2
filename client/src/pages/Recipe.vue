@@ -1,26 +1,21 @@
 <template>
-  <div>
-    <h1 class="text-red-700">Recettes de cuisine</h1>
-    <ul>
-      <li v-for="recipe in store.recipes" :key="recipe.id">
-        {{ recipe.name }}
-      </li>
-    </ul>
-  </div>
+  titre : {{recipe.title}}
 </template>
 
 <script>
 import { defineComponent } from 'vue';
-import {recipesStore} from "../stores/recipes.ts";
+import { getRecipe } from '../api/recipeApi';
 
 export default defineComponent({
   name: 'Recipes',
   setup() {
-    const store = recipesStore();
-
     return {
-      store,
+      recipeId: null,
+      recipe: null,
     };
+  },
+  async mounted() {
+    this.recipe = await getRecipe(this.$route.params.id);
   },
 });
 </script>

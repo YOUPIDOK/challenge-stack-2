@@ -7,7 +7,10 @@ export async function searchRecipe(query: string) {
 }
 
 export async function createRecipe({recipe}: { recipe: any }) {
-    console.log(recipe);
+    recipe.ingredients.forEach((ingredient: any) => {
+        delete ingredient.nutrition.id;
+    });
+
     // TODO : get author from auth
     recipe.author = "5f9c0b9b9b9b9b9b9b9b9b9b"
 
@@ -17,4 +20,8 @@ export async function createRecipe({recipe}: { recipe: any }) {
 
 export async function searchRecipes(query: string) {
     return await axios.get(urn, {params: {search: query}}).then((response) => { return response.data });
+}
+
+export async function getRecipe(id: string) {
+    return await axios.get(urn + '/' + id).then((response) => { return response.data });
 }

@@ -12,7 +12,7 @@ const routes = [
             },
             {
                 name: 'Recipe',
-                path: '/recette/:id',
+                path: '/recettes/:id',
                 component: () => import('../pages/Recipe.vue'),
             },
             {
