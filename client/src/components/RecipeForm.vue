@@ -146,13 +146,17 @@ export default {
     },
   },
   methods: {
-    handleSubmit() {
+    async handleSubmit() {
       // TODO : Vérification de données
       // TODO : Envoi de la requête
-      createRecipe({recipe: this.recipe});
-      // TODO : Redirection
+      this.recipe = await createRecipe({recipe: this.recipe});
+
+      console.log(this.recipe);
+
 
       this.resetForm();
+
+      this.$router.push('/recettes/' + this.recipe.id);
     },
     resetForm() {
       this.recipe = this.defaultRecipe;
