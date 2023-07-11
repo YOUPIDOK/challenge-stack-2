@@ -10,23 +10,23 @@ const nutritionSchema = new mongoose.Schema<INutritionDoc, INutritionModel>(
     },
     water: {
       type: Number,
-      required: true,
+      default: null,
     },
     energ_kcal: {
       type: Number,
-      required: true,
+      default: null,
     },
     protein: {
       type: Number,
-      required: true,
+      default: null,
     },
     lipid: {
       type: Number,
-      required: true,
+      default: null,
     },
     carbohydrt: {
       type: Number,
-      required: true,
+      default: null,
     },
   },
   {

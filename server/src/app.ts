@@ -12,7 +12,6 @@ import { jwtStrategy } from './modules/auth';
 import { authLimiter } from './modules/utils';
 import { ApiError, errorConverter, errorHandler } from './modules/errors';
 import routes from './routes/v1';
-import seed from './seed';
 
 const app: Express = express();
 
@@ -63,7 +62,5 @@ app.use(errorConverter);
 
 // handle error
 app.use(errorHandler);
-
-seed();
 
 export default app;

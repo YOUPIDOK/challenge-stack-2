@@ -2,15 +2,13 @@ import { logger } from '../../modules/logger';
 import nutritionSeeder from './nutrition';
 
 const seed = async () => {
-  await nutritionSeeder()
-    .then((completed) => {
-      logger.debug('Successfuly completed seeding nutrition...');
-      Promise.resolve(completed);
-    })
-    .catch((error) => {
-      logger.error('Failed seeding nutrition...');
-      Promise.reject(error);
-    });
+  try {
+    logger.info('Seeding nutrition...');
+    await nutritionSeeder();
+    logger.info('Seeding nutrition completed');
+  } catch (error) {
+    logger.error(error);
+  }
 };
 
 export default { seed };

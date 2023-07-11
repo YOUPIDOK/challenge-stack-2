@@ -1,10 +1,7 @@
-import { readFileSync } from 'fs';
 import { Nutrition } from '../../../modules/nutrition';
+import nutrition from './nutrition.json' assert { type: 'json' };
 
 const nutritionSeeder = async () => {
-  const fileContent = readFileSync('./nutrition.json', 'utf8');
-  const nutrition = JSON.parse(fileContent);
-
   await Nutrition.deleteMany({});
   await Nutrition.insertMany(nutrition);
 };
