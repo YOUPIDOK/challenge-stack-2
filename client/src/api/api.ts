@@ -1,7 +1,7 @@
 // api.js
-export async function fetchRecipes() {
-    // Simuler une requête à l'API
+export async function getRecipes(page: number = 1) {
     return new Promise((resolve) => {
+        page = page++;
         setTimeout(() => {
             resolve([
                 { id: 1, name: 'Recette 1' },

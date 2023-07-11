@@ -1,12 +1,42 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import Recipes from '../pages/Recipes.vue';
 
 const routes = [
     {
-        path: '/',
-        name: 'Recipes',
-        component: Recipes,
-    },
+        path: "/",
+        component: () => import("../layouts/MainLayout.vue"),
+        children: [
+            {
+                name: 'Home',
+                path: '/',
+                component: () => import('../pages/Home.vue'),
+            },
+            {
+                name: 'Recipe',
+                path: '/recette/:id',
+                component: () => import('../pages/Recipe.vue'),
+            },
+            {
+                name: 'RandomRecipe',
+                path: '/recette-aleatoire',
+                component: () => import('../pages/RandomRecipe.vue'),
+            },
+            {
+                name: 'Recipes',
+                path: '/recettes',
+                component: () => import('../pages/Recipes.vue'),
+            },
+            {
+                name: 'NewRecipe',
+                path: '/creer-ma-recette',
+                component: () => import('../pages/NewRecipe.vue'),
+            },
+            {
+                name: 'Error404',
+                path: "/:catchAll(.*)*",
+                component: () => import('../pages/Error404.vue'),
+            },
+        ]
+    }
 ];
 
 const router = createRouter({

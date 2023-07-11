@@ -15,7 +15,7 @@ export default {
     const store = recipesStore();
 
     onMounted(async () => {
-      await store.fetchRecipes();
+      // await store.fetchRecipes();
     });
   },
 };

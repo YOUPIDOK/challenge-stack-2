@@ -1,9 +1,9 @@
 import { defineStore } from "pinia";
-import {fetchRecipes} from "../api.ts";
-
+import {fetchRecipes, getRecipes} from "../api/api.ts";
+import {IIngredientModel} from "../models/recipe/ingredient/ingredient.interfaces.ts";
 export const recipesStore = defineStore("recipes", {
   state: () => ({
-    recipes: [],
+    recipes: [] as Array<IIngredientModel>,
   }),
   getters: {
     // getNbDonations: (state) => {
@@ -37,9 +37,9 @@ export const recipesStore = defineStore("recipes", {
     // }
   },
   actions: {
-    async fetchRecipes() {
-      this.recipes = await fetchRecipes();
-    },
+    // async fetchRecipes() {
+    //   this.recipes = await getRecipes();
+    // },
   },
   // actions: {
     // initDonations(donations) {
