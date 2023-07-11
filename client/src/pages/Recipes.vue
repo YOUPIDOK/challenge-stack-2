@@ -71,5 +71,9 @@ export default defineComponent({
       searchQuery,
     };
   },
+  async mounted() {
+    const response = await fetch("http://localhost:3000/v1/recipes");
+    this.recipes = (await response.json()).results;
+  },
 });
 </script>

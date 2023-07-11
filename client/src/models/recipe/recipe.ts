@@ -1,5 +1,5 @@
-import { IIngredient, IIngredientInput } from "./ingredient/ingredient";
-import { IStep, IStepInput } from "./step/step";
+import { IIngredient } from "./ingredient/ingredient";
+import { IStep } from "./step/step";
 
 export interface IRecipe {
   id: string;
@@ -9,9 +9,4 @@ export interface IRecipe {
   publication_date: Date;
   ingredients: IIngredient[];
   steps: IStep[];
-}
-
-export interface IRecipeInput extends Omit<IRecipe, "id"> {
-  ingredients: IIngredientInput[];
-  steps: IStepInput[];
 }
