@@ -1,13 +1,5 @@
 <template>
   <div>
-    <section class="bg-blue-500 py-10">
-      <div class="container mx-auto">
-        <h1 class="text-4xl text-white font-bold">Générer une recette aléatoire</h1>
-        <p class="text-white mt-4">Laissez-vous surprendre par notre générateur de recettes aléatoires et explorez de nouvelles saveurs.</p>
-        <router-link :to="{ name: 'RandomRecipe' }" class="bg-white text-blue-500 hover:bg-blue-100 text-sm font-bold uppercase mt-6 py-2 px-4 rounded-full inline-block">Découvrir</router-link>
-      </div>
-    </section>
-
     <section class="py-10">
       <div class="container mx-auto">
         <h2 class="text-3xl text-gray-800 font-bold mb-6">Recherchez une recette</h2>

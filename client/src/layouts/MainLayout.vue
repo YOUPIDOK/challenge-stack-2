@@ -6,7 +6,6 @@ import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/vue/24/outline'
 const navigation = [
   { name: 'Accueil', href: '/' },
   { name: 'Les recettes', href: '/recettes' },
-  { name: 'Une recette aléatoire', href: '/recette-aleatoire' },
   { name: 'Créer ma recette', href: '/creer-ma-recette' },
 ]
 </script>

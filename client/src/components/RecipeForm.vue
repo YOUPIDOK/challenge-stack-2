@@ -34,10 +34,10 @@
           <label class="block text-gray-700 font-bold mb-2">Ingrédients :</label>
           <div id="ingredients" >
             <div class="mb-2 flex" v-for="(ingredient, index) in recipe.ingredients" :key="index">
-              <Combobox as="div" v-model="selectedIngredient">
+              <Combobox as="div" v-model="recipe.ingredients[index].ingredient">
                 <div class="relative">
                   <ComboboxInput class="px-4 py-2  border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
-                                 @change="query = $event.target.value && ingredientChange(index)" :display-value="(ingredient) => ingredient?.name"
+                                 @change="query = $event.target.value" :display-value="(ingredient) => ingredient?.name"
                                  :placeholder="selectedIngredient ? '' : 'Ingrédient'"
                                  required
                   />
@@ -75,7 +75,7 @@
 </template>
 
 <script>
-import { computed, ref } from 'vue'
+import {computed, ref, watch} from 'vue'
 import { CheckIcon, ChevronUpDownIcon } from '@heroicons/vue/20/solid'
 
 import {
@@ -87,6 +87,7 @@ import {
   ComboboxOptions,
 } from '@headlessui/vue'
 import {searchIngredients} from '../api/ingredientApi';
+import {createRecipe} from "../api/recipeApi";
 export default {
   name: 'RecipeForm',
   components: {ComboboxLabel, Combobox, ComboboxInput, ComboboxButton, ComboboxOptions, ComboboxOption, CheckIcon, ChevronUpDownIcon},
@@ -102,14 +103,24 @@ export default {
     },
   },
   setup(props) {
+    const defaultRecipe = {
+      title: "",
+      description: "",
+      ingredients: [],
+      steps: [],
+    };
     const query = ref('');
     const selectedIngredient = ref(null);
-    const filteredIngredients = computed(() => searchIngredients(query.value));
+    let filteredIngredients = ref([]);
+
+    watch(query, async (newQuery) => {
+      filteredIngredients.value = await searchIngredients(newQuery);
+    })
 
     const recipe = ref(props.isCreateMod ?
-        {title: "", description: "", ingredients: [], steps: []} :
+        defaultRecipe :
         // Object.assign({}, store.getDonationById(parseInt(props.donationId)))
-        {title: "", description: "", ingredients: [], steps: []}
+        defaultRecipe
     );
 
     return {
@@ -117,19 +128,31 @@ export default {
       selectedIngredient,
       filteredIngredients,
       recipe,
+      defaultRecipe
     };
   },
   methods: {
+    defaultRecipe() {
+      return {
+        title: "",
+        description: "",
+        ingredients: [],
+        steps: [],
+      }
+    },
     handleSubmit() {
-      console.log(this.recipe);
+      // TODO : Vérification de données
+      // TODO : Envoi de la requête
+      createRecipe({recipe: this.recipe});
+      // TODO : Redirection
 
       this.resetForm();
     },
     resetForm() {
-      // Réinitialiser les champs du formulaire
+      this.recipe = this.defaultRecipe;
     },
     addIngredient() {
-      this.recipe.ingredients.push({name: "", quantity: ""});
+      this.recipe.ingredients.push({ingredient: {}, quantity: ""});
     },
     addStep() {
       this.recipe.steps.push({title: "", description: ""});
@@ -139,10 +162,6 @@ export default {
     },
     removeStep(index) {
       this.recipe.steps.splice(index, 1);
-    },
-    ingredientChange(index) {
-      console.log(this.selectedIngredient);
-      this.recipe.ingredients[index]
     },
   }
 };

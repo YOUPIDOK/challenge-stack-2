@@ -1,5 +1,4 @@
 import { defineStore } from "pinia";
-import {fetchRecipes, getRecipes} from "../api/api.ts";
 import {IIngredientModel} from "../models/recipe/ingredient/ingredient.interfaces.ts";
 export const recipesStore = defineStore("recipes", {
   state: () => ({

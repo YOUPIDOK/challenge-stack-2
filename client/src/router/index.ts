@@ -16,11 +16,6 @@ const routes = [
                 component: () => import('../pages/Recipe.vue'),
             },
             {
-                name: 'RandomRecipe',
-                path: '/recette-aleatoire',
-                component: () => import('../pages/RandomRecipe.vue'),
-            },
-            {
                 name: 'Recipes',
                 path: '/recettes',
                 component: () => import('../pages/Recipes.vue'),
