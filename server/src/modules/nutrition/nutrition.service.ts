@@ -22,7 +22,8 @@ export const createNutrition = async (nutritionBody: CreateNutritionBody): Promi
 export const queryNutritions = async (search: string): Promise<INutritionDoc[] | null> => {
   const nutritions = await Nutrition.find({ $text: { $search: search } })
     .skip(20)
-    .limit(10);
+    .limit(10)
+    .exec();
   return nutritions;
 };
 
