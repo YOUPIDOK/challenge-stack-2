@@ -1,17 +1,16 @@
 <template>
-  titre : {{recipe.title}}
+  titre : {{recipe?.title}}
 </template>
 
 <script>
-import { defineComponent } from 'vue';
+import {defineComponent, ref} from 'vue';
 import { getRecipe } from '../api/recipeApi';
 
 export default defineComponent({
   name: 'Recipes',
   setup() {
     return {
-      recipeId: null,
-      recipe: null,
+      recipe: ref({}),
     };
   },
   async mounted() {

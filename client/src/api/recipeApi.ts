@@ -15,7 +15,8 @@ export async function createRecipe({recipe}: { recipe: any }) {
     recipe.author = "5f9c0b9b9b9b9b9b9b9b9b9b"
 
     recipe.publication_date = moment().format('YYYY-MM-DD')
-    return await axios.post(urn, recipe);
+
+    return await axios.post(urn, recipe).then((res) => res.data);
 }
 
 export async function searchRecipes(query: string) {
