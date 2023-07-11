@@ -1,9 +1,6 @@
 # TODOs
 ## Server
 - [ ] Sécurité avec users
-- [ ] Endpoints
-- [ ] BDD
-- [ ] A partir d’un référentiel d’ingrédients à modéliser vous-même
 - [ ] Tests unitaires
 ## CLient
 ### Mnimum
@@ -16,3 +13,10 @@
 ### Bonus
 - [ ] Bonus : formulaire d’édition du référentiel des ingrédients
 - [ ] Bonus : export JSON de la liste des recettes
+
+### Nathan 
+- Responsive
+  - Home
+  - Creer recette
+  - Liste recette
+- 

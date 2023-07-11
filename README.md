@@ -12,3 +12,5 @@
 ```shell
 docker-compose up
 ```
+## Required 
+- Node ^16.20.0
