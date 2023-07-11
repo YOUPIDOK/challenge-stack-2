@@ -12,6 +12,9 @@ const recipeSchema = new mongoose.Schema<IRecipeDoc, IRecipeModel>(
       required: true,
       trim: true,
     },
+    description: {
+      type: String,
+    },
     author: {
       type: String,
       ref: 'User',

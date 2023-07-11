@@ -13,32 +13,26 @@ export const createRecipe = catchAsync(async (req: Request, res: Response) => {
 });
 
 export const getRecipes = catchAsync(async (req: Request, res: Response) => {
-  // const filter = pick(req.query, ['name', 'role']);
+  const filter = pick(req.query, ['name']);
   const options: IOptions = pick(req.query, ['sortBy', 'limit', 'page', 'projectBy']);
-  const result = await recipeService.queryRecipes({}, options);
+  const result = await recipeService.queryRecipes(filter, options);
   res.send(result);
 });
 
 export const getRecipe = catchAsync(async (req: Request, res: Response) => {
-  if (typeof req.params['recipeId'] === 'string') {
-    const recipe = await recipeService.getRecipeById(new mongoose.Types.ObjectId(req.params['recipeId']));
-    if (!recipe) {
-      throw new ApiError(httpStatus.NOT_FOUND, 'Recipe not found');
-    }
-    res.send(recipe);
+  const recipe = await recipeService.getRecipeById(new mongoose.Types.ObjectId(req.params['recipeId']));
+  if (!recipe) {
+    throw new ApiError(httpStatus.NOT_FOUND, 'Recipe not found');
   }
+  res.send(recipe);
 });
 
 export const updateRecipe = catchAsync(async (req: Request, res: Response) => {
-  if (typeof req.params['recipeId'] === 'string') {
-    const recipe = await recipeService.updateRecipeById(new mongoose.Types.ObjectId(req.params['recipeId']), req.body);
-    res.send(recipe);
-  }
+  const recipe = await recipeService.updateRecipeById(req, new mongoose.Types.ObjectId(req.params['recipeId']), req.body);
+  res.send(recipe);
 });
 
 export const deleteRecipe = catchAsync(async (req: Request, res: Response) => {
-  if (typeof req.params['recipeId'] === 'string') {
-    await recipeService.deleteRecipeById(new mongoose.Types.ObjectId(req.params['recipeId']));
-    res.status(httpStatus.NO_CONTENT).send();
-  }
+  await recipeService.deleteRecipeById(req, new mongoose.Types.ObjectId(req.params['recipeId']));
+  res.status(httpStatus.NO_CONTENT).send();
 });

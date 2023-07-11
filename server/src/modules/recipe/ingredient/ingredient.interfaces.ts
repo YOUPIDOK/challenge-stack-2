@@ -1,10 +1,10 @@
 import { Model, Document } from 'mongoose';
 import { QueryResult } from '../../paginate/paginate';
+import { INutrition } from '@/modules/nutrition/nutrition.interfaces';
 
 export interface IIngredient {
-  name: string;
+  name: INutrition;
   quantity: number;
-  unit: string;
 }
 
 export interface IIngredientDoc extends IIngredient, Document {}

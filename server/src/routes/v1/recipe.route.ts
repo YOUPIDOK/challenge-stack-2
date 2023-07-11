@@ -1,6 +1,5 @@
 import express, { Router } from 'express';
 import { validate } from '../../modules/validate';
-import { auth } from '../../modules/auth';
 import { recipeController, recipeValidation } from '../../modules/recipe';
 
 const router: Router = express.Router();
@@ -12,9 +11,9 @@ router
 
 router
   .route('/:recipeId')
-  .get(auth('getRecipes'), validate(recipeValidation.getRecipe), recipeController.getRecipe)
-  .patch(auth('manageRecipes'), validate(recipeValidation.updateRecipe), recipeController.updateRecipe)
-  .delete(auth('manageRecipes'), validate(recipeValidation.deleteRecipe), recipeController.deleteRecipe);
+  .get(validate(recipeValidation.getRecipe), recipeController.getRecipe)
+  .patch(validate(recipeValidation.updateRecipe), recipeController.updateRecipe)
+  .delete(validate(recipeValidation.deleteRecipe), recipeController.deleteRecipe);
 
 export default router;
 

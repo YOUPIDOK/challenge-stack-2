@@ -1,5 +1,6 @@
 import httpStatus from 'http-status';
 import mongoose from 'mongoose';
+import { Request } from 'express';
 import Recipe from './recipe.model';
 import ApiError from '../errors/ApiError';
 import { IOptions, QueryResult } from '../paginate/paginate';
@@ -39,6 +40,7 @@ export const getRecipeById = async (id: mongoose.Types.ObjectId): Promise<IRecip
  * @returns {Promise<IRecipeDoc | null>}
  */
 export const updateRecipeById = async (
+  req: Request,
   recipeId: mongoose.Types.ObjectId,
   updateBody: UpdateRecipeBody
 ): Promise<IRecipeDoc | null> => {
@@ -46,6 +48,11 @@ export const updateRecipeById = async (
   if (!recipe) {
     throw new ApiError(httpStatus.NOT_FOUND, 'Recipe not found');
   }
+
+  if (req.user.id !== recipe.author) {
+    throw new ApiError(httpStatus.FORBIDDEN, 'Forbidden');
+  }
+
   Object.assign(recipe, updateBody);
   await recipe.save();
   return recipe;
@@ -56,11 +63,16 @@ export const updateRecipeById = async (
  * @param {mongoose.Types.ObjectId} recipeId
  * @returns {Promise<IRecipeDoc | null>}
  */
-export const deleteRecipeById = async (recipeId: mongoose.Types.ObjectId): Promise<IRecipeDoc | null> => {
+export const deleteRecipeById = async (req: Request, recipeId: mongoose.Types.ObjectId): Promise<IRecipeDoc | null> => {
   const recipe = await getRecipeById(recipeId);
   if (!recipe) {
     throw new ApiError(httpStatus.NOT_FOUND, 'Recipe not found');
   }
+
+  if (req.user.id !== recipe.author) {
+    throw new ApiError(httpStatus.FORBIDDEN, 'Forbidden');
+  }
+
   await recipe.deleteOne();
   return recipe;
 };
