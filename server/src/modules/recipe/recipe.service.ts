@@ -33,13 +33,6 @@ export const queryRecipes = async (filter: Record<string, any>, options: IOption
 export const getRecipeById = async (id: mongoose.Types.ObjectId): Promise<IRecipeDoc | null> => Recipe.findById(id);
 
 /**
- * Get recipe by email
- * @param {string} email
- * @returns {Promise<IRecipeDoc | null>}
- */
-export const getRecipeByEmail = async (email: string): Promise<IRecipeDoc | null> => Recipe.findOne({ email });
-
-/**
  * Update recipe by id
  * @param {mongoose.Types.ObjectId} recipeId
  * @param {UpdateRecipeBody} updateBody
