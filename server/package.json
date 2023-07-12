@@ -37,7 +37,8 @@
     "prepare": "husky install",
     "release": "standard-version && git push --follow-tags origin master",
     "commit": "git add -A && cz",
-    "seed": "tsc --build && cross-env NODE_ENV=development node --trace-warnings --experimental-modules --es-module-specifier-resolution=node dist/seed.js"
+    "seed": "tsc --build && cross-env NODE_ENV=development node --trace-warnings --experimental-modules --es-module-specifier-resolution=node dist/seed.js",
+    "create:user": "tsc --build && cross-env NODE_ENV=development node --trace-warnings --experimental-modules --es-module-specifier-resolution=node dist/create-user.js"
   },
   "keywords": [
     "node",
