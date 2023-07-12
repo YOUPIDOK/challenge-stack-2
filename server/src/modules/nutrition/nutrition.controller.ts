@@ -4,7 +4,7 @@ import catchAsync from '../utils/catchAsync';
 import ApiError from '../errors/ApiError';
 import * as nutritionService from './nutrition.service';
 
-export const getNutritions = catchAsync(async (req: Request, res: Response) => {
+export const queryNutritions = catchAsync(async (req: Request, res: Response) => {
   const search = req.query['search'] ?? '';
   if (typeof search !== 'string') {
     throw new ApiError(httpStatus.BAD_REQUEST, 'Search must be a string');
@@ -16,4 +16,4 @@ export const getNutritions = catchAsync(async (req: Request, res: Response) => {
   res.send(nutrition);
 });
 
-export default { getNutritions };
+export default { queryNutritions };

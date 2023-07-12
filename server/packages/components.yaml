@@ -1,5 +1,34 @@
 components:
   schemas:
+    Nutrition:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        unit:
+          type: [ml, g]
+        water:
+          type: number
+        energ_kcal:
+          type: number
+        protein:
+          type: number
+        lipid:
+          type: number
+        carbohydrt:
+          type: number
+      example:
+        id: 64ad484c48f93ea39c37a668
+        name: cheese,gjetost,
+        unit: g,
+        water: 13.44,
+        energ_kcal: 466,
+        protein: 9.65,
+        lipid: 29.51,
+        carbohydrt: 42.65,
+
     User:
       type: object
       properties:
