@@ -14,8 +14,7 @@
 yarn install
 ```
 
-### Development
-
+### Développement
 ```shell
 yarn dev
 ```
