@@ -141,7 +141,7 @@ yarn create:user
 ### Documentation
 
 - docs (swagger) (http://localhost:3000/v1/docs) - Seulement en mode développement
-../documentation/Capture d’écran 2023-07-12 à 15.58.05.png!
+[![name](../documentation/Capture d’écran 2023-07-12 à 15.58.05.png)]
 
 ### Message d'erreur
 
