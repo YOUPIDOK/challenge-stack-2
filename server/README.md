@@ -203,7 +203,3 @@ logger.debug('message'); // Niveau 5
 - Ajouter des tests
 - Ajouter des plus de fixtures pour le dev
 - Ajouter les routes pour les admins
-
-
-## Exemple de requêtes
-
