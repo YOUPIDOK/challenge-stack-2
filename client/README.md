@@ -27,7 +27,6 @@ yarn build
 ```
 
 ## Fonctionalités
-
 - Page d'accueil
 - Page de listsing des recettes avec fonction de recherche
 - Page d'une recette
