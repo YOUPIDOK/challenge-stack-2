@@ -1,18 +1,39 @@
-# Vue 3 + TypeScript + Vite
-
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
-
-## Recommended IDE Setup
-
-- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
-
-## Type Support For `.vue` Imports in TS
-
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
-
-If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
-
-1. Disable the built-in TypeScript Extension
-   1. Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-   2. Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
-2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
+[Retour](../README.md)
+# Client
+## Technologies
+- Vue 3.3
+- Vite
+- Typescript
+## Installation
+```shell
+yarn install
+```
+### Development
+```shell
+yarn dev
+```
+### Production
+```shell
+yarn build 
+# Déployer ensuite l'application avec un serveur Web (Apache, Nginx) ou docker
+```
+## Fonctionalités
+- Page d'accueil
+- Page de listsing des recettes avec fonction de recherche
+- Page d'une recette
+- Page de création d'une recette avec analyse des calories en direct (connexion requise)
+- Connexion / Déconnexion
+## Améliorations
+### Fonctionnalités
+- CRUD des utilisateurs
+- CRUD des recettes
+- CRUD des ingrédients
+### Sécurité
+- Utiliser le token de l'utilisateur
+- Utiliser le refresh token pour recharger le token de l'utilisateur quand il n'est plus valide
+- Utiliser une validation de formulaire avant envoi des requètes
+- Ne pas laisser l'accès à la page login si déja connecté
+- Ne pas laisser l'accès à la page création de recette si non connecté
+### Ux
+- Système de message flash 
+###

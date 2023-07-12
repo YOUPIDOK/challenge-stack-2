@@ -1,16 +1,9 @@
 # Challenge Stack 2
-> Callories APP
+> Cette application permet aux administrateurs du site de gérer des recettes. Une recette est composée d'étapes et d'ingrédients. Les calories de la recette sont calculées automatiquement.
+## Groupe 9
 - Léo STEVENOT
 - Nathan PONCET
+
 ## Documentation
-- [Documentation server](./server/README.md)
-- [Documentation client](./client/README.md)
-- [MLD](https://dbdiagram.io/d/64aba71702bd1c4a5ec7084e)
-## Docker
-- Mongodb
-## Installation
-```shell
-docker-compose up
-```
-## Required 
-- Node ^16.20.0
+- [Documentation Server](./server/README.md)
+- [Documentation Client](./client/README.md)
