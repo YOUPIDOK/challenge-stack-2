@@ -118,7 +118,7 @@ export default {
     isRandomMod: {
       type: Boolean,
       required: false,
-      default: true,
+      default: false,
     },
     // Recipe Id for edition
     recipeId: {

@@ -16,6 +16,6 @@ export async function searchIngredients(query: string) {
 
 
 export async function getIngredients() {
-    return await axios.get(urn).then((response) => { return response.data });
+    return await axios.get(url).then((response) => { return response.data });
 }
 
