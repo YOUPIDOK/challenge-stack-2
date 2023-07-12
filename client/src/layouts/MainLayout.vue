@@ -10,6 +10,8 @@
           </DisclosureButton>
         </div>
       </div>
+
+      <!--  navigation links  -->
       <div class="flex justify-between">
         <nav class="hidden lg:flex lg:space-x-8 lg:py-2" aria-label="Global">
             <router-link :to="{ name: 'Home' }"  class="text-gray-900 hover:bg-gray-50 hover:text-gray-900 inline-flex items-center rounded-md py-2 px-3 text-sm font-medium" >Accueil</router-link>
@@ -23,6 +25,7 @@
       </div>
     </div>
 
+    <!-- MObile navigation  -->
     <DisclosurePanel as="nav" class="lg:hidden" aria-label="Global">
       <div class="space-y-1 px-2 pb-3 pt-2">
         <router-link :to="{ name: 'Home' }"  class="text-gray-900 hover:bg-gray-50 hover:text-gray-900 block rounded-md py-2 px-3 text-base font-medium" >Accueil</router-link>

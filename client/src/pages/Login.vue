@@ -51,7 +51,7 @@ export default defineComponent({
       if (res.code !== undefined) {
         // TODO : Show error
       } else {
-        this.store.login(res.user, res.tokens);
+        this.store.login(res.user, res.tokens); // Save login data
         this.$router.push('/')
       }
     },

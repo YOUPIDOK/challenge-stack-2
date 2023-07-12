@@ -1,3 +1,7 @@
+/**
+ * Get the total kcal of a recipe
+ * @param recipe
+ */
 export function getKcal(recipe) {
     if (recipe.ingredients == undefined) {
         return 0;

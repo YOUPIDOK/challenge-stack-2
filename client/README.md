@@ -37,10 +37,11 @@ yarn build
 ## Améliorations
 
 ### Fonctionnalités
-
+- Page de recette aléatoire
 - CRUD des utilisateurs
 - CRUD des recettes
 - CRUD des ingrédients
+- Variables d'environnement
 
 ### Sécurité
 

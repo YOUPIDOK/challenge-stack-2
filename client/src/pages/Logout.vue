@@ -9,7 +9,7 @@ import {useRouter} from "vue-router";
 export default defineComponent({
   name: 'Logout',
   setup() {
-    authStore().logout();
+    authStore().logout();       // Clear user data
     const router = useRouter()
 
     router.push('/');

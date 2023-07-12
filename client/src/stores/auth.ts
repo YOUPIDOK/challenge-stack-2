@@ -8,6 +8,11 @@ export const authStore = defineStore("auth", {
     refreshTokenExpiresAt: null,
   }),
   actions: {
+      /**
+       * Save login data in the store
+       * @param user
+       * @param tokens
+       */
     login(user, tokens) {
       this.user = user;
 
@@ -17,6 +22,9 @@ export const authStore = defineStore("auth", {
       this.refreshToken = tokens.refresh.refreshToken;
       this.refreshTokenExpiresAt = tokens.refresh.token;
     },
+      /**
+       * Remove login data from the store
+       */
     logout() {
         this.user = null;
         this.token = null;
