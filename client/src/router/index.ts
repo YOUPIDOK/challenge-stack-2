@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router';
+import {authStore} from "../stores/auth.ts";
 
 const routes = [
     {
@@ -53,5 +54,19 @@ const router = createRouter({
     history: createWebHistory(),
     routes,
 });
+
+router.beforeEach((to, from, next) => {
+    // Login middleware
+    if (to.name === 'Login' && authStore().user !== null) {
+        next({ name: 'Home' });
+    }
+
+    // User required middleware
+    if ((to.name === 'NewRecipe' || to.name === 'RandomRecipe') && authStore().user === null) {
+        next({ name: 'Home' });
+    }
+
+    next()
+})
 
 export default router;
