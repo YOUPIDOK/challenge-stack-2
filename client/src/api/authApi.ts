@@ -1,7 +1,6 @@
 import axios from "axios";
-import moment from "moment";
 
-const urn = 'http://localhost:3000/V1/auth';
+const url = import.meta.env.VITE_SERVER_URL + '/auth';
 
 /**
  * User login
@@ -9,8 +8,8 @@ const urn = 'http://localhost:3000/V1/auth';
  * @param email
  * @param password
  */
-export async function login(email, password) {
-    return await axios.post(urn + '/login', {email: email, password: password})
+export async function login(email: string, password: string) {
+    return await axios.post(url + '/login', {email: email, password: password})
         .then((res) => res.data)
         .catch((err) => err.response.data);
 }

@@ -1,11 +1,15 @@
 import axios from "axios";
 
-const urn = 'http://localhost:3000/V1/nutritions';
+const url = import.meta.env.VITE_SERVER_URL + "/nutritions";
 
 /**
  * Search for an ingredient
  * @param query
  */
 export async function searchIngredients(query: string) {
-    return await axios.get(urn, {params: {search: query}}).then((response) => { return response.data });
+  return await axios
+    .get(url, { params: { search: query } })
+    .then((response) => {
+      return response.data;
+    });
 }
