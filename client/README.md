@@ -36,6 +36,7 @@ yarn build
 ```
 
 ## Fonctionalités
+
 - Page d'accueil
 - Page de listsing des recettes avec fonction de recherche
 - Page d'une recette
@@ -61,14 +62,17 @@ src
 ## Améliorations
 
 ### Fonctionnalités
+
 - CRUD des utilisateurs
 - CRUD des recettes
 - CRUD des ingrédients
 
 ### Sécurité
+
 - Utiliser le token de l'utilisateur
 - Utiliser le refresh token pour recharger le token de l'utilisateur quand il n'est plus valide
 - Utiliser une validation de formulaire avant envoi des requètes
 
 ### Ux
+
 - Pagination des recettes
