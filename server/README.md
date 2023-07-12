@@ -1,7 +1,9 @@
 [Retour](../README.md)
 
 # Server
+
 ## Technologies
+
 - Node ^16.20.0
 - Mongoose
 - Mogodb
@@ -11,37 +13,47 @@
   - Mongodb
 
 ## Installation
+
 Installation des dépendances:
+
 ```bash
 yarn install
 ```
+
 Variables d'environment
+
 ```bash
 cp .env.example .env
 ```
 
 ## Commandes
+
 ### Développement
+
 ```bash
 yarn dev
 ```
 
 ### Production
+
 ```bash
 yarn start
 ```
 
 ### Compilation .ts vers .js
+
 ```bash
 yarn compile
 ```
 
 ### Compilation .ts vers .js en mode Watch
+
 ```bash
 yarn compile:watch
 ```
 
 ### Tests:
+
 ```bash
 # Tous les tests
 yarn test
@@ -60,6 +72,7 @@ yarn coverage
 ```
 
 ### Docker:
+
 ```bash
 # Développement
 yarn docker:dev
@@ -72,6 +85,7 @@ yarn docker:test
 ```
 
 ### Linting:
+
 ```bash
 # ESLint
 yarn lint
@@ -87,6 +101,7 @@ yarn prettier:fix
 ```
 
 ### Fixtures
+
 ```shell
 yarn seed
 ```
@@ -98,16 +113,47 @@ yarn create:user
 ```
 
 ## Fonctionalités
-- Authentication (register / login / logout / refreshToken / forgotPassword / resetPassword)
-- Authorization
+
+### Authentication
+
+- register
+- login
+- logout
+- refreshToken
+- forgotPassword
+- resetPassword
+
+### Authorization
+
+- Verif Role
+- Verif user is owner of resource to update or delete
+
+### CRUD
+
 - CRUD User
 - CRUD Recipe
-- CRUD Nutrition
-- Vérification de données
-- docs (swagger) (http://localhost:3000/v1/docs) - Seulement en mode développement
+- R Nutrition
+- Get Random Recipe
 
-## Message d'erreur
-### Exemple
+### Vérification de données
+
+- Joi / utilisation de validateur pour chaque endpoint
+
+### Documentation
+
+- docs (swagger) (http://localhost:3000/v1/docs) - Seulement en mode développement
+[![name](https://github.com/YOUPIDOK/challenge-stack-2/blob/main/documentation/Capture%20d%E2%80%99%C3%A9cran%202023-07-12%20%C3%A0%2015.58.05.png)]
+
+### Methodes calculées
+
+- Utilisation de propriétés virtuelles sur les schemas mongoose
+  ex: total_kcal sur le schema Recipe
+  ex: unit sur le schema Ingredient
+
+### Message d'erreur
+
+#### Exemple
+
 ```json
 {
   "code": 404,
@@ -115,7 +161,8 @@ yarn create:user
 }
 ```
 
-## Logger
+### Logger
+
 ```javascript
 import logger from 'src/config/logger';
 
@@ -127,7 +174,8 @@ logger.verbose('message'); // Niveau 4
 logger.debug('message'); // Niveau 5
 ```
 
-## Tri
+### Tri
+
 ```json
 {
   "results": [],
@@ -138,7 +186,8 @@ logger.debug('message'); // Niveau 5
 }
 ```
 
-## Pagination
+### Pagination
+
 ```json
 {
   "sortBy": "name:desc",
@@ -149,7 +198,12 @@ logger.debug('message'); // Niveau 5
 ```
 
 ## Améliorations
+
 - Améliorer la documentation en ligne
 - Ajouter des tests
 - Ajouter des plus de fixtures pour le dev
 - Ajouter les routes pour les admins
+
+
+## Exemple de requêtes
+

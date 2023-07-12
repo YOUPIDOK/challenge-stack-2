@@ -42,6 +42,13 @@ const recipeSchema = new mongoose.Schema<IRecipeDoc, IRecipeModel>(
   }
 );
 
+recipeSchema.set('toObject', { virtuals: true });
+recipeSchema.set('toJSON', { virtuals: true });
+
+recipeSchema.virtual('total_kcal').get(function () {
+  return this.ingredients.reduce((prev, acc) => prev + acc.nutrition.energ_kcal * acc.quantity, 0);
+});
+
 // add plugin that converts mongoose to json
 recipeSchema.plugin(toJSON);
 recipeSchema.plugin(paginate);

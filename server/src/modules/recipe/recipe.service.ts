@@ -5,6 +5,8 @@ import Recipe from './recipe.model';
 import ApiError from '../errors/ApiError';
 import { IOptions, QueryResult } from '../paginate/paginate';
 import { CreateRecipeBody, UpdateRecipeBody, IRecipeDoc } from './recipe.interfaces';
+import { getRandomInt } from '../utils/randInt';
+import { Nutrition } from '../nutrition';
 
 /**
  * Create a recipe
@@ -32,6 +34,46 @@ export const queryRecipes = async (filter: Record<string, any>, options: IOption
  * @returns {Promise<IRecipeDoc | null>}
  */
 export const getRecipeById = async (id: mongoose.Types.ObjectId): Promise<IRecipeDoc | null> => Recipe.findById(id);
+
+/**
+ * Get random recipe
+ * @returns {Promise<IRecipeDoc | null>}
+ */
+export const getRandomRecipe = async (): Promise<IRecipeDoc | null> => {
+  const ingredients = await Promise.all(
+    Array(getRandomInt(1, 10)).fill(null).map(async () => {
+      const count = await Nutrition.count().exec();
+      var random = Math.floor(Math.random() * count);
+      const nutrition = await Nutrition.findOne().skip(random).exec();
+      if (!nutrition) {
+        throw new ApiError(httpStatus.NOT_FOUND, 'Nutrition not found');
+      }
+      return {
+        nutrition,
+        quantity: getRandomInt(1, 1000),
+      };
+    })
+  );
+
+  const steps = await Promise.all(
+    Array(getRandomInt(1, 10)).fill(null).map(async (_, i) => {
+      return {
+        title: `Etape ${i}`,
+        description: `Description de l'étape ${i}`,
+      };
+    })
+  );
+
+  const recipe = new Recipe({
+    name: 'Random recipe',
+    description: 'Random recipe description',
+    image: 'https://picsum.photos/200/300',
+    ingredients,
+    steps,
+  });
+
+  return recipe;
+};
 
 /**
  * Update recipe by id

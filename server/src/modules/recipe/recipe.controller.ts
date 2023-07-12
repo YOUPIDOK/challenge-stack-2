@@ -27,6 +27,14 @@ export const getRecipe = catchAsync(async (req: Request, res: Response) => {
   res.send(recipe);
 });
 
+export const getRandomRecipe = catchAsync(async (_: Request, res: Response) => {
+  const recipe = await recipeService.getRandomRecipe();
+  if (!recipe) {
+    throw new ApiError(httpStatus.EXPECTATION_FAILED, 'error while getting random recipe');
+  }
+  res.send(recipe);
+});
+
 export const updateRecipe = catchAsync(async (req: Request, res: Response) => {
   const recipe = await recipeService.updateRecipeById(req, new mongoose.Types.ObjectId(req.params['recipeId']), req.body);
   res.send(recipe);
