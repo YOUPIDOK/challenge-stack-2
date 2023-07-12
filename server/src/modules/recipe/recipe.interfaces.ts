@@ -6,6 +6,7 @@ import { IStepModel } from './step/step.interfaces';
 export interface IRecipe {
   title: string;
   description: string;
+  total_kcal: string;
   image: string;
   author: string;
   publication_date: Date;
@@ -19,5 +20,5 @@ export interface IRecipeModel extends Model<IRecipeDoc> {
   paginate(filter: Record<string, any>, options: Record<string, any>): Promise<QueryResult>;
 }
 
-export type CreateRecipeBody = IRecipe;
-export type UpdateRecipeBody = Partial<IRecipe>;
+export type CreateRecipeBody = Omit<IRecipe, 'total_kcal'>;
+export type UpdateRecipeBody = Partial<Omit<IRecipe, 'total_kcal'>>;
