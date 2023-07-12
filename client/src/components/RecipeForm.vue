@@ -67,6 +67,7 @@
                   </div>
                 </Combobox>
                 <input required v-model="ingredient.quantity" type="number" step="1" min="1" name="ingredientQuantity[]" placeholder="Quantité" class="ml-2 border border-gray-300 rounded-md px-4 py-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <div class="flex justify-end flex-col ml-1">{{ recipe.ingredients[index].nutrition.unit }}</div>
                 <button type="button" class="ml-2 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" @click="removeIngredient(index)">Supprimer</button>
               </div>
               <button type="button" id="addIngredient" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded" @click="addIngredient">Ajouter un ingrédient</button>

@@ -1,9 +1,10 @@
 export function getKcal(recipe) {
-    let kcal = 0;
+    if (recipe.ingredients == undefined) {
+        return 0;
+    }
 
-    recipe.ingredients.forEach((ingredient) => {
-        kcal += (ingredient.quantity * ingredient.nutrition.energ_kcal)/100;
-    });
-
-    return kcal.toFixed(0);
+    return (recipe.ingredients.reduce(
+        (prev, acc) => prev + acc.nutrition.energ_kcal * acc.quantity,
+        0
+    ) / 100).toFixed(0);
 }

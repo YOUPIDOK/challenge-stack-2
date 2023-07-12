@@ -35,11 +35,8 @@
           <span class="text-gray-500">
             Calories :
             {{
-              recipe.ingredients.reduce(
-                (prev, acc) => prev + acc.nutrition.energ_kcal * acc.quantity,
-                0
-              ) / 100
-            }}
+              getKcal(recipe)
+            }} Kcal
           </span>
         </div>
         </RouterLink>
@@ -53,9 +50,11 @@
 import { computed, defineComponent, ref } from "vue";
 import { IRecipe } from "../models/recipe/recipe";
 import { RouterLink } from "vue-router";
+import { getKcal } from "../services/recipeService";
 
 export default defineComponent({
   name: "Recipes",
+  methods: {getKcal},
   components: { RouterLink },
   setup() {
     const searchQuery = ref("");

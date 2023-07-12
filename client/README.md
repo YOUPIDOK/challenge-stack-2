@@ -35,5 +35,5 @@ yarn build
 - Ne pas laisser l'accès à la page login si déja connecté
 - Ne pas laisser l'accès à la page création de recette si non connecté
 ### Ux
-- Système de message flash 
-###
+- Système de message flash
+- Pagination des recettes
