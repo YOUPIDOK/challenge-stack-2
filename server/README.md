@@ -144,6 +144,12 @@ yarn create:user
 - docs (swagger) (http://localhost:3000/v1/docs) - Seulement en mode développement
 [![name](https://github.com/YOUPIDOK/challenge-stack-2/blob/main/documentation/Capture%20d%E2%80%99%C3%A9cran%202023-07-12%20%C3%A0%2015.58.05.png)]
 
+### Methodes calculées
+
+- Utilisation de propriétés virtuelles sur les schemas mongoose
+  ex: total_kcal sur le schema Recipe
+  ex: unit sur le schema Ingredient
+
 ### Message d'erreur
 
 #### Exemple
@@ -197,3 +203,7 @@ logger.debug('message'); // Niveau 5
 - Ajouter des tests
 - Ajouter des plus de fixtures pour le dev
 - Ajouter les routes pour les admins
+
+
+## Exemple de requêtes
+

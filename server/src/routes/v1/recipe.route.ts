@@ -8,7 +8,9 @@ const router: Router = express.Router();
 router
   .route('/')
   .post(/* auth(), */ validate(recipeValidation.createRecipe), recipeController.createRecipe)
-  .get(validate(recipeValidation.getRecipes), recipeController.getRecipes);
+  .get(recipeController.getRecipes);
+
+router.route('/random').get(validate(recipeValidation.getRecipes), recipeController.getRandomRecipe);
 
 router
   .route('/:recipeId')
