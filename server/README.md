@@ -1,66 +1,55 @@
 [Retour](../README.md)
 
 # Server
+
 ## Technologies
+
 - Mongoose
 - Docker
   - App
   - Mongodb
+
 ## Installation
-### Dev
-#### FIXTURES
-### Prod
-## Fonctionalités
-## Améliorations
-- Sécurisé toutes les routes sauf GET
-- Améliorer la documentation en ligne
 
-DOC EN LIGNE (swagger)
-GESTION des erreurs (structures du message)
-
-```bash
-npx create-nodejs-ts-app <project-name>
-```
-
-Or
-
-```bash
-npm init nodejs-ts-app <project-name>
-```
-
-## Manual Installation
 Installation des dépendances:
+
 ```bash
 yarn install
 ```
 
 Variables d'environment
+
 ```bash
 cp .env.example .env
 ```
 
 ## Commands
-Running locally:
+
+### Running locally:
+
 ```bash
 yarn dev
 ```
 
-Running in production:
+### Running in production:
+
 ```bash
 yarn start
 ```
 
-Compiling to JS from TS
+### Compiling to JS from TS
+
 ```bash
 yarn compile
 ```
 
-Compiling to JS from TS in watch mode
+### Compiling to JS from TS in watch mode
+
 ```bash
 yarn compile:watch
 ```
 
-Testing:
+### Testing:
 
 ```bash
 # run all tests
@@ -79,7 +68,7 @@ yarn test:watch
 yarn coverage
 ```
 
-Docker:
+### Docker:
 
 ```bash
 # run docker container in development mode
@@ -92,7 +81,7 @@ yarn docker:prod
 yarn docker:test
 ```
 
-Linting:
+### Linting:
 
 ```bash
 # run ESLint
@@ -108,23 +97,26 @@ yarn prettier
 yarn prettier:fix
 ```
 
-## Making Changes
+### FIXTURES
 
-Run `yarn dev` so you can compile Typescript(.ts) files in watch mode
-
-```bash
-yarn dev
+```shell
+yarn seed
 ```
 
-Add your changes to TypeScript(.ts) files which are in the src folder. The files will be automatically compiled to JS if you are in watch mode.
+### Create User In Terminal
 
-Add tests for the new feature
-
-Run `yarn test:ts` to make sure all Typescript tests pass.
-
-```bash
-yarn test:ts
+```shell
+yarn create:user
 ```
+
+## Fonctionalités
+
+- Authentication (register / login / logout / refreshToken / forgotPassword / resetPassword)
+- Authorization
+- CRUD User
+- CRUD Recipe
+- CRUD Nutrition
+- Vérification de données
 
 ## Error Handling
 
@@ -135,35 +127,17 @@ yarn test:ts
 }
 ```
 
-## Validation
-- Middleare
-- Vérification de donné
-
-## Authentication
-- login
-- logout
-- refreshToken
-
 ### Logger
+
 ```javascript
-const logger = require('<path to src>/config/logger');
+import logger from 'src/config/logger';
 
-logger.error('message');    // Niveau 0
-logger.warn('message');     // Niveau 1
-logger.info('message');     // Niveau 2
-logger.http('message');     // Niveau 3
-logger.verbose('message');  // Niveau 4
-logger.debug('message');    // Niveau 5
-```
-
-### Sort
-```json
-{
-  "sortBy": "name:desc",
-  "limit": 5,
-  "page": 2,
-  "projectBy": "name:hide, role:hide"
-}
+logger.error('message'); // Niveau 0
+logger.warn('message'); // Niveau 1
+logger.info('message'); // Niveau 2
+logger.http('message'); // Niveau 3
+logger.verbose('message'); // Niveau 4
+logger.debug('message'); // Niveau 5
 ```
 
 ### Pagination
@@ -178,3 +152,20 @@ logger.debug('message');    // Niveau 5
 }
 ```
 
+### Pagination Sort
+
+```json
+{
+  "sortBy": "name:desc",
+  "limit": 5,
+  "page": 2,
+  "projectBy": "name:hide, role:hide"
+}
+```
+
+## Améliorations
+
+- Améliorer la documentation en ligne
+- Ajouter des tests
+- Ajouter des plus de fixtures pour le dev
+- Ajouter les routes pour les admins
