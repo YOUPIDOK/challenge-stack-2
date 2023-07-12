@@ -5,7 +5,6 @@
 <script>
 import {defineComponent, ref} from 'vue';
 import { getRecipe } from '../api/recipeApi';
-
 export default defineComponent({
   name: 'Recipes',
   setup() {

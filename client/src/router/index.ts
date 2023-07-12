@@ -26,6 +26,16 @@ const routes = [
                 component: () => import('../pages/NewRecipe.vue'),
             },
             {
+                name: 'Login',
+                path: '/connexion',
+                component: () => import('../pages/Login.vue'),
+            },
+            {
+                name: 'Logout',
+                path: '/deconnexion',
+                component: () => import('../pages/Logout.vue'),
+            },
+            {
                 name: 'Error404',
                 path: "/:catchAll(.*)*",
                 component: () => import('../pages/Error404.vue'),

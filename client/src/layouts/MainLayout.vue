@@ -1,15 +1,3 @@
-<script setup>
-import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/vue'
-import { MagnifyingGlassIcon } from '@heroicons/vue/20/solid'
-import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/vue/24/outline'
-
-const navigation = [
-  { name: 'Accueil', href: '/' },
-  { name: 'Les recettes', href: '/recettes' },
-  { name: 'Créer ma recette', href: '/creer-ma-recette' },
-]
-</script>
-
 <template>
   <Disclosure as="header" class="bg-white shadow" v-slot="{ open }">
     <div class="mx-auto max-w-7xl px-2 sm:px-4 lg:divide-y lg:divide-gray-200 lg:px-8">
@@ -22,18 +10,50 @@ const navigation = [
           </DisclosureButton>
         </div>
       </div>
-      <nav class="hidden lg:flex lg:space-x-8 lg:py-2" aria-label="Global">
-        <a v-for="item in navigation" :key="item.name" :href="item.href" :class="[item.current ? 'bg-gray-100 text-gray-900' : 'text-gray-900 hover:bg-gray-50 hover:text-gray-900', 'inline-flex items-center rounded-md py-2 px-3 text-sm font-medium']" :aria-current="item.current ? 'page' : undefined">{{ item.name }}</a>
-      </nav>
+      <div class="flex justify-between">
+        <nav class="hidden lg:flex lg:space-x-8 lg:py-2" aria-label="Global">
+          <router-link v-for="item in navigation" :key="item.name" :to="{ name: item.page }"  :class="[item.current ? 'bg-gray-100 text-gray-900' : 'text-gray-900 hover:bg-gray-50 hover:text-gray-900', 'inline-flex items-center rounded-md py-2 px-3 text-sm font-medium']" :aria-current="item.current ? 'page' : undefined">{{ item.name }}</router-link>
+        </nav>
+        <div class="flex items-center">
+          <router-link :to="{ name: 'Login' }" v-if="store.user === null" class="text-gray-900 hover:bg-gray-50 hover:text-gray-900 inline-flex items-center rounded-md py-2 px-3 text-sm font-medium">Connexion</router-link>
+          <router-link :to="{ name: 'Logout' }" v-else class="cursor-pointer	text-gray-900 hover:bg-gray-50 hover:text-gray-900 inline-flex items-center rounded-md py-2 px-3 text-sm font-medium">Déconnexion</router-link >
+        </div>
+      </div>
     </div>
 
     <DisclosurePanel as="nav" class="lg:hidden" aria-label="Global">
       <div class="space-y-1 px-2 pb-3 pt-2">
-        <DisclosureButton v-for="item in navigation" :key="item.name" as="a" :href="item.href" :class="[item.current ? 'bg-gray-100 text-gray-900' : 'text-gray-900 hover:bg-gray-50 hover:text-gray-900', 'block rounded-md py-2 px-3 text-base font-medium']" :aria-current="item.current ? 'page' : undefined">{{ item.name }}</DisclosureButton>
+        <router-link v-for="item in navigation" :key="item.name" as="a" :to="{ name: item.page }" :class="[item.current ? 'bg-gray-100 text-gray-900' : 'text-gray-900 hover:bg-gray-50 hover:text-gray-900', 'block rounded-md py-2 px-3 text-base font-medium']" :aria-current="item.current ? 'page' : undefined">{{ item.name }}</router-link>
       </div>
     </DisclosurePanel>
   </Disclosure>
   <RouterView />
 </template>
+
+<script>
+import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/vue'
+import {authStore} from '../stores/auth'
+import { RouterLink } from 'vue-router'
+export default {
+  name: 'MainLayout',
+  components: {Disclosure, RouterLink},
+  setup() {
+    const store = authStore();
+
+    const navigation = [
+      { name: 'Accueil', page: 'Home' },
+      { name: 'Les recettes', page: 'Recipes' },
+      { name: 'Créer ma recette', page: 'NewRecipe' },
+    ]
+
+    return {
+      navigation,
+      store,
+    }
+  }
+}
+</script>
+
+
 
 
