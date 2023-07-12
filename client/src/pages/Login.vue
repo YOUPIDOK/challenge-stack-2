@@ -30,6 +30,7 @@
 import {defineComponent, ref} from 'vue';
 import { authStore} from '../stores/auth';
 import {login} from '../api/authApi';
+import {useNotification} from "@kyvg/vue3-notification";
 
 export default defineComponent({
   name: 'Login',
@@ -49,7 +50,11 @@ export default defineComponent({
       const res = await login(this.email, this.password);
 
       if (res.code !== undefined) {
-        // TODO : Show error
+        const { notify } = useNotification()
+        notify({
+          type: "error",
+          title: "Le mot de passe ou l'adresse e-mail est incorrecte",
+        });
       } else {
         this.store.login(res.user, res.tokens); // Save login data
         this.$router.push('/')

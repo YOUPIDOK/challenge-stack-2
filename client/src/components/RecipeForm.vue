@@ -104,6 +104,7 @@ import {
 import {searchIngredients} from '../api/ingredientApi';
 import {createRecipe} from "../api/recipeApi";
 import {getKcal, getRandomRecipe} from '../services/recipeService';
+import {useNotification} from "@kyvg/vue3-notification";
 
 export default {
   name: 'RecipeForm',
@@ -161,6 +162,7 @@ export default {
     if (this.isRandomMod) {
       // Random mod
       this.recipe = await getRandomRecipe();
+      this.recipe.author = authStore().user.id;
     } else if (this.isCreateMod) {
       // Create mod
       this.recipe = this.defaultRecipe;
@@ -183,7 +185,14 @@ export default {
 
       const recipePageUrn = '/recettes/' + this.recipe.id;
 
+      const { notify } = useNotification()
+      notify({
+        type: "success",
+        title: "La recette a bien été créée !",
+      });
+
       this.resetForm();
+
 
       this.$router.push(recipePageUrn);
     },

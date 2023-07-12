@@ -10,6 +10,7 @@ const url = import.meta.env.VITE_SERVER_URL + "/recipes";
 export async function createRecipe({ recipe }: { recipe: any }) {
   recipe.ingredients.forEach((ingredient: any) => {
     delete ingredient.nutrition.id;
+    delete ingredient.nutrition.unit;
   });
 
   recipe.publication_date = moment().format("YYYY-MM-DD");
