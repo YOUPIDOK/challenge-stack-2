@@ -42,29 +42,56 @@ export default router;
  *             type: object
  *             required:
  *               - name
- *               - email
- *               - password
- *               - role
+ *               - description
+ *               - image
+ *               - author
+ *               - publication_date
+ *               - ingredients
+ *               - steps
  *             properties:
  *               name:
  *                 type: string
- *               email:
+ *               description:
  *                 type: string
- *                 format: email
- *                 description: must be unique
- *               password:
+ *               image:
  *                 type: string
- *                 format: password
- *                 minLength: 8
- *                 description: At least one number and one letter
- *               role:
- *                  type: string
- *                  enum: [recipe, admin]
- *             example:
- *               name: fake name
- *               email: fake@example.com
- *               password: password1
- *               role: recipe
+ *               author:
+ *                 type: string
+ *               publication_date:
+ *                 type: string
+ *               ingredients:
+ *                 type: array
+ *                 items:
+ *                   type: object
+ *                   properties:
+ *                     nutrition:
+ *                       type: object
+ *                       properties:
+ *                         name:
+ *                           type: string
+ *                         unit:
+ *                           type: string
+ *                         water:
+ *                           type: number
+ *                         energ_kcal:
+ *                           type: number
+ *                         protein:
+ *                           type: number
+ *                         lipid:
+ *                           type: number
+ *                         carbohydrt:
+ *                           type: number
+ *                     quantity:
+ *                       type: number
+ *               steps:
+ *                 type: array
+ *                 items:
+ *                   type: object
+ *                   properties:
+ *                     name:
+ *                       type: string
+ *                     description:
+ *                       type: string
  *     responses:
  *       "201":
  *         description: Created
@@ -72,30 +99,23 @@ export default router;
  *           application/json:
  *             schema:
  *                $ref: '#/components/schemas/Recipe'
- *       "400":
- *         $ref: '#/components/responses/DuplicateEmail'
  *       "401":
  *         $ref: '#/components/responses/Unauthorized'
  *       "403":
  *         $ref: '#/components/responses/Forbidden'
+ *       "404":
+ *         $ref: '#/components/responses/NotFound'
  *
  *   get:
  *     summary: Get all recipes
- *     description: Only admins can retrieve all recipes.
+ *     description: Everyone can retrieve all recipes.
  *     tags: [Recipes]
- *     security:
- *       - bearerAuth: []
  *     parameters:
  *       - in: query
  *         name: name
  *         schema:
  *           type: string
  *         description: Recipe name
- *       - in: query
- *         name: role
- *         schema:
- *           type: string
- *         description: Recipe role
  *       - in: query
  *         name: sortBy
  *         schema:
@@ -144,10 +164,6 @@ export default router;
  *                 totalResults:
  *                   type: integer
  *                   example: 1
- *       "401":
- *         $ref: '#/components/responses/Unauthorized'
- *       "403":
- *         $ref: '#/components/responses/Forbidden'
  */
 
 /**
@@ -155,10 +171,8 @@ export default router;
  * /recipes/{id}:
  *   get:
  *     summary: Get a recipe
- *     description: Logged in recipes can fetch only their own recipe information. Only admins can fetch other recipes.
+ *     description: recipes can fetch only their own recipe information.
  *     tags: [Recipes]
- *     security:
- *       - bearerAuth: []
  *     parameters:
  *       - in: path
  *         name: id
@@ -182,7 +196,7 @@ export default router;
  *
  *   patch:
  *     summary: Update a recipe
- *     description: Logged in recipes can only update their own information. Only admins can update other recipes.
+ *     description: Logged in users can only update their own recipe. Only admins can update other recipes.
  *     tags: [Recipes]
  *     security:
  *       - bearerAuth: []
@@ -202,19 +216,47 @@ export default router;
  *             properties:
  *               name:
  *                 type: string
- *               email:
+ *               description:
  *                 type: string
- *                 format: email
- *                 description: must be unique
- *               password:
+ *               image:
  *                 type: string
- *                 format: password
- *                 minLength: 8
- *                 description: At least one number and one letter
- *             example:
- *               name: fake name
- *               email: fake@example.com
- *               password: password1
+ *               author:
+ *                 type: string
+ *               publication_date:
+ *                 type: string
+ *               ingredients:
+ *                 type: array
+ *                 items:
+ *                   type: object
+ *                   properties:
+ *                     nutrition:
+ *                       type: object
+ *                       properties:
+ *                        name:
+ *                         type: string
+ *                        unit:
+ *                         type: string
+ *                        water:
+ *                         type: number
+ *                        energ_kcal:
+ *                          type: number
+ *                        protein:
+ *                          type: number
+ *                        lipid:
+ *                          type: number
+ *                        carbohydrt:
+ *                          type: number
+ *                     quantity:
+ *                       type: number
+ *               steps:
+ *                type: array
+ *                items:
+ *                  type: object
+ *                  properties:
+ *                    name:
+ *                      type: string
+ *                    description:
+ *                      type: string
  *     responses:
  *       "200":
  *         description: OK
@@ -222,8 +264,6 @@ export default router;
  *           application/json:
  *             schema:
  *                $ref: '#/components/schemas/Recipe'
- *       "400":
- *         $ref: '#/components/responses/DuplicateEmail'
  *       "401":
  *         $ref: '#/components/responses/Unauthorized'
  *       "403":
@@ -233,7 +273,7 @@ export default router;
  *
  *   delete:
  *     summary: Delete a recipe
- *     description: Logged in recipes can delete only themselves. Only admins can delete other recipes.
+ *     description: Logged in users can delete only their recipe. Only admins can delete other recipes.
  *     tags: [Recipes]
  *     security:
  *       - bearerAuth: []

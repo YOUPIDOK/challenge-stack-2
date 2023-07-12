@@ -1,5 +1,52 @@
 components:
   schemas:
+    Recipe:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        image:
+          type: string
+        author:
+          type: string
+        publication_date:
+          type: string
+        ingredients:
+          type: array
+          items:
+            type: object
+            properties:
+              nutrition:
+                type: object
+                properties:
+                  name:
+                    type: string
+                  unit:
+                    type: string
+                  water:
+                    type: number
+                  energ_kcal:
+                    type: number
+                  protein:
+                    type: number
+                  lipid:
+                    type: number
+                  carbohydrt:
+                    type: number
+              quantity:
+                type: number
+        steps:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+              description:
+                type: string
+
     Nutrition:
       type: object
       properties:
