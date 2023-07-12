@@ -1,7 +1,7 @@
 <template>
   <div class="container mx-auto mt-10">
     <h2 class="text-3xl text-gray-800 font-bold mb-6">
-      Découvrez nos recettes import { RouterLink } from "vue-router";
+      Découvrez nos recettes
     </h2>
 
     <div class="mb-4">
@@ -14,32 +14,35 @@
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      <div
-        v-for="recipe in filteredRecipes"
-        :key="recipe.id"
-        class="bg-white rounded-lg shadow-md"
-      >
+      <article v-for="recipe in filteredRecipes" :key="recipe.id" class="group">
         <img
+          alt="Lava"
           :src="recipe.image"
-          alt="Recette 1"
-          class="h-40 w-full object-cover rounded-t-lg"
+          class="h-56 w-full rounded-xl object-cover shadow-xl transition group-hover:grayscale-[50%]"
         />
+
         <div class="p-4">
-          <h3 class="text-xl text-gray-800 font-semibold mb-2">
-            {{ recipe.title }}
-          </h3>
-          <p class="text-gray-600 mb-4">{{ recipe.description }}</p>
-          <div class="flex justify-between items-center">
-            <RouterLink
-              :to="{ name: 'Recipe', params: { id: recipe.id } }"
-              class="bg-blue-500 text-white hover:bg-blue-600 text-sm font-bold py-2 px-4 rounded-full"
-            >
-              Voir la recette
-            </RouterLink>
-            <span class="text-gray-500">Calories : 500</span>
-          </div>
+          <RouterLink :to="{ name: 'Recipe', params: { id: recipe.id } }">
+            <h3 class="text-lg font-medium text-gray-900">
+              {{ recipe.title }}
+            </h3>
+          </RouterLink>
+
+          <p class="mt-2 line-clamp-3 text-sm/relaxed text-gray-500">
+            {{ recipe.description }}
+          </p>
+
+          <span class="text-gray-500">
+            Calories :
+            {{
+              recipe.ingredients.reduce(
+                (prev, acc) => prev + acc.nutrition.energ_kcal * acc.quantity,
+                0
+              ) / 100
+            }}
+          </span>
         </div>
-      </div>
+      </article>
     </div>
   </div>
 </template>
