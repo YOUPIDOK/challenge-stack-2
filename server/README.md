@@ -1,7 +1,9 @@
 [Retour](../README.md)
 
 # Server
+
 ## Technologies
+
 - Node ^16.20.0
 - Mongoose
 - Mogodb
@@ -11,37 +13,47 @@
   - Mongodb
 
 ## Installation
+
 Installation des dépendances:
+
 ```bash
 yarn install
 ```
+
 Variables d'environment
+
 ```bash
 cp .env.example .env
 ```
 
 ## Commandes
+
 ### Développement
+
 ```bash
 yarn dev
 ```
 
 ### Production
+
 ```bash
 yarn start
 ```
 
 ### Compilation .ts vers .js
+
 ```bash
 yarn compile
 ```
 
 ### Compilation .ts vers .js en mode Watch
+
 ```bash
 yarn compile:watch
 ```
 
 ### Tests:
+
 ```bash
 # Tous les tests
 yarn test
@@ -60,6 +72,7 @@ yarn coverage
 ```
 
 ### Docker:
+
 ```bash
 # Développement
 yarn docker:dev
@@ -72,6 +85,7 @@ yarn docker:test
 ```
 
 ### Linting:
+
 ```bash
 # ESLint
 yarn lint
@@ -87,6 +101,7 @@ yarn prettier:fix
 ```
 
 ### Fixtures
+
 ```shell
 yarn seed
 ```
@@ -98,16 +113,40 @@ yarn create:user
 ```
 
 ## Fonctionalités
-- Authentication (register / login / logout / refreshToken / forgotPassword / resetPassword)
+
+### Authentication
+
+- register
+- login
+- logout
+- refreshToken
+- forgotPassword
+- resetPassword
+
+### Authorization
+
 - Authorization
+
+### Authorization
+
 - CRUD User
 - CRUD Recipe
 - CRUD Nutrition
-- Vérification de données
-- docs (swagger) (http://localhost:3000/v1/docs) - Seulement en mode développement
+- Get Random Recipe
 
-## Message d'erreur
-### Exemple
+### Vérification de données
+
+- Joi
+
+### Documentation
+
+- docs (swagger) (http://localhost:3000/v1/docs) - Seulement en mode développement
+documentation/Capture d’écran 2023-07-12 à 15.58.05.png!
+
+### Message d'erreur
+
+#### Exemple
+
 ```json
 {
   "code": 404,
@@ -115,7 +154,8 @@ yarn create:user
 }
 ```
 
-## Logger
+### Logger
+
 ```javascript
 import logger from 'src/config/logger';
 
@@ -127,7 +167,8 @@ logger.verbose('message'); // Niveau 4
 logger.debug('message'); // Niveau 5
 ```
 
-## Tri
+### Tri
+
 ```json
 {
   "results": [],
@@ -138,7 +179,8 @@ logger.debug('message'); // Niveau 5
 }
 ```
 
-## Pagination
+### Pagination
+
 ```json
 {
   "sortBy": "name:desc",
@@ -149,6 +191,7 @@ logger.debug('message'); // Niveau 5
 ```
 
 ## Améliorations
+
 - Améliorer la documentation en ligne
 - Ajouter des tests
 - Ajouter des plus de fixtures pour le dev
