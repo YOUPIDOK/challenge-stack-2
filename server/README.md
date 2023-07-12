@@ -125,18 +125,19 @@ yarn create:user
 
 ### Authorization
 
-- Authorization
+- Verif Role
+- Verif user is owner of resource to update or delete
 
-### Authorization
+### CRUD
 
 - CRUD User
 - CRUD Recipe
-- CRUD Nutrition
+- R Nutrition
 - Get Random Recipe
 
 ### Vérification de données
 
-- Joi
+- Joi / utilisation de validateur pour chaque endpoint
 
 ### Documentation
 
