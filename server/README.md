@@ -104,6 +104,7 @@ yarn create:user
 - CRUD Recipe
 - CRUD Nutrition
 - Vérification de données
+- docs (swagger) (http://localhost:3000/v1/docs)
 
 ## Message d'erreur
 ### Exemple

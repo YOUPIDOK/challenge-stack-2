@@ -27,7 +27,6 @@ export default router;
  *         name: search
  *         schema:
  *           type: string
- *         description: Nutrition name
  *     responses:
  *       "200":
  *         description: OK
