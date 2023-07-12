@@ -42,7 +42,8 @@ yarn build
 - Page de génération d'une recette aléatoire
 - Page de création d'une recette avec analyse des calories en direct (connexion requise)
 - Connexion / Déconnexion
-
+- Sécurité des routes avec authentification
+- Système de messages flash pour informer l'utilisateur
 ## Améliorations
 
 ### Fonctionnalités
@@ -54,10 +55,6 @@ yarn build
 - Utiliser le token de l'utilisateur
 - Utiliser le refresh token pour recharger le token de l'utilisateur quand il n'est plus valide
 - Utiliser une validation de formulaire avant envoi des requètes
-- Ne pas laisser l'accès à la page login si déja connecté
-- Ne pas laisser l'accès à la page création de recette si non connecté
 
 ### Ux
-
-- Système de message flash
 - Pagination des recettes
