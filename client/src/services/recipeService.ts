@@ -5,5 +5,5 @@ export function getKcal(recipe) {
         kcal += (ingredient.quantity * ingredient.nutrition.energ_kcal)/100;
     });
 
-    return kcal;
+    return kcal.toFixed(0);
 }

@@ -2,7 +2,7 @@
   titre : {{recipe?.title}}
 </template>
 
-<script>
+<script lang="ts">
 import {defineComponent, ref} from 'vue';
 import { getRecipe } from '../api/recipeApi';
 export default defineComponent({

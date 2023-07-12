@@ -1,7 +1,7 @@
 <template>
   <div class="container mx-auto mt-10">
     <h2 class="text-3xl text-gray-800 font-bold mb-6">
-      Découvrez nos recettes
+      Découvrez nos recettes import { RouterLink } from "vue-router";
     </h2>
 
     <div class="mb-4">
@@ -44,13 +44,14 @@
 <script lang="ts">
 import { computed, defineComponent, ref } from "vue";
 import { IRecipe } from "../models/recipe/recipe";
+import { RouterLink } from "vue-router";
 
 export default defineComponent({
   name: "Recipes",
+  components: { RouterLink },
   setup() {
     const searchQuery = ref("");
     const recipes = ref<IRecipe[]>([]);
-
     const filteredRecipes = computed(() => {
       return recipes.value.filter(
         (recipe) =>
@@ -62,7 +63,6 @@ export default defineComponent({
             .includes(searchQuery.value.toLowerCase())
       );
     });
-
     return {
       searchQuery,
       recipes,
