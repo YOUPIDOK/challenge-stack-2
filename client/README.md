@@ -14,8 +14,7 @@
 yarn install
 ```
 
-### Development
-
+### Développement
 ```shell
 yarn dev
 ```
@@ -52,7 +51,5 @@ yarn build
 - Ne pas laisser l'accès à la page création de recette si non connecté
 
 ### Ux
-
 - Système de message flash
-
-###
+- Pagination des recettes

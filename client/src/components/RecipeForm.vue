@@ -1,6 +1,8 @@
 <template>
   <form @submit.prevent="handleSubmit" action="" class="mt-3">
     <div class="grid grid-cols-1 gap-4">
+
+      <!-- Recipe main info  -->
       <div class="p-4">
         <div class="mb-4">
           <label class="block text-gray-700 font-bold mb-2">Recette :</label>
@@ -20,6 +22,8 @@
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+        <!-- Step part -->
         <div class="p-4">
           <div class="mb-4">
             <label class="block text-gray-700 font-bold mb-2">Étapes :</label>
@@ -36,6 +40,7 @@
           </div>
         </div>
 
+        <!-- Ingredient part -->
         <div class="p-4">
           <div class="mb-4">
             <label class="block text-gray-700 font-bold mb-2">Ingrédients :</label>
@@ -67,6 +72,7 @@
                   </div>
                 </Combobox>
                 <input required v-model="ingredient.quantity" type="number" step="1" min="1" name="ingredientQuantity[]" placeholder="Quantité" class="ml-2 border border-gray-300 rounded-md px-4 py-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <div class="flex justify-end flex-col ml-1">{{ recipe.ingredients[index].nutrition.unit }}</div>
                 <button type="button" class="ml-2 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" @click="removeIngredient(index)">Supprimer</button>
               </div>
               <button type="button" id="addIngredient" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded" @click="addIngredient">Ajouter un ingrédient</button>
@@ -103,11 +109,13 @@ export default {
   name: 'RecipeForm',
   components: {ComboboxLabel, Combobox, ComboboxInput, ComboboxButton, ComboboxOptions, ComboboxOption, CheckIcon, ChevronUpDownIcon},
   props: {
+    // Edition or creation
     isCreateMod: {
       type: Boolean,
       required: false,
       default: true,
     },
+    // Recipe Id for edition
     recipeId: {
       type: Object,
       required: false,
@@ -124,6 +132,7 @@ export default {
       steps: [],
     };
 
+    // ****** Search ingredient part ******
     const query = ref('');
     const selectedNutrition = ref(null);
     let filteredNutritions = ref([]);
@@ -137,6 +146,7 @@ export default {
         // Object.assign({}, store.getDonationById(parseInt(props.donationId)))
         defaultRecipe
     );
+    // *************************************
 
     return {
       query,
@@ -153,8 +163,8 @@ export default {
   },
   methods: {
     async handleSubmit() {
-      // TODO : Vérification de données
-      // TODO : Envoi de la requête
+      // TODO : Data validation
+
       this.recipe = await createRecipe({recipe: this.recipe});
 
       const recipePageUrn = '/recettes/' + this.recipe.id;

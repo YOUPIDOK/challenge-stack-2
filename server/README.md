@@ -1,116 +1,103 @@
 [Retour](../README.md)
 
 # Server
-
 ## Technologies
-
+- Node ^16.20.0
 - Mongoose
+- Mogodb
+- Express
 - Docker
   - App
   - Mongodb
 
 ## Installation
-
 Installation des dépendances:
-
 ```bash
 yarn install
 ```
-
 Variables d'environment
-
 ```bash
 cp .env.example .env
 ```
 
-## Commands
-
-### Running locally:
-
+## Commandes
+### Développement
 ```bash
 yarn dev
 ```
 
-### Running in production:
-
+### Production
 ```bash
 yarn start
 ```
 
-### Compiling to JS from TS
-
+### Compilation .ts vers .js
 ```bash
 yarn compile
 ```
 
-### Compiling to JS from TS in watch mode
-
+### Compilation .ts vers .js en mode Watch
 ```bash
 yarn compile:watch
 ```
 
-### Testing:
-
+### Tests:
 ```bash
-# run all tests
+# Tous les tests
 yarn test
 
-# run TypeScript tests
+# Tests typescript
 yarn test:ts
 
-# run JS tests
+# Tests JS
 yarn test:js
 
-# run all tests in watch mode
+# Tous les tests en mode watch
 yarn test:watch
 
-# run test coverage
+# Coverage des tests
 yarn coverage
 ```
 
 ### Docker:
-
 ```bash
-# run docker container in development mode
+# Développement
 yarn docker:dev
 
-# run docker container in production mode
+# Production
 yarn docker:prod
 
-# run all tests in a docker container
+# Tests
 yarn docker:test
 ```
 
 ### Linting:
-
 ```bash
-# run ESLint
+# ESLint
 yarn lint
 
-# fix ESLint errors
+# Erreurs ESLint
 yarn lint:fix
 
-# run prettier
+# Prettier
 yarn prettier
 
-# fix prettier errors
+# Prettier erreurs
 yarn prettier:fix
 ```
 
-### FIXTURES
-
+### Fixtures
 ```shell
 yarn seed
 ```
 
-### Create User In Terminal
+### Création d'un utilisateur
 
 ```shell
 yarn create:user
 ```
 
 ## Fonctionalités
-
 - Authentication (register / login / logout / refreshToken / forgotPassword / resetPassword)
 - Authorization
 - CRUD User
@@ -118,8 +105,8 @@ yarn create:user
 - CRUD Nutrition
 - Vérification de données
 
-## Error Handling
-
+## Message d'erreur
+### Exemple
 ```json
 {
   "code": 404,
@@ -127,8 +114,7 @@ yarn create:user
 }
 ```
 
-### Logger
-
+## Logger
 ```javascript
 import logger from 'src/config/logger';
 
@@ -140,8 +126,7 @@ logger.verbose('message'); // Niveau 4
 logger.debug('message'); // Niveau 5
 ```
 
-### Pagination
-
+## Tri
 ```json
 {
   "results": [],
@@ -152,8 +137,7 @@ logger.debug('message'); // Niveau 5
 }
 ```
 
-### Pagination Sort
-
+## Pagination
 ```json
 {
   "sortBy": "name:desc",
@@ -164,7 +148,6 @@ logger.debug('message'); // Niveau 5
 ```
 
 ## Améliorations
-
 - Améliorer la documentation en ligne
 - Ajouter des tests
 - Ajouter des plus de fixtures pour le dev
