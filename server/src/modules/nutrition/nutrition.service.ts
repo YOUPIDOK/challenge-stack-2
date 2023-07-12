@@ -10,7 +10,7 @@ import { INutritionDoc } from './nutrition.interfaces';
 export const queryNutritions = async (search: string): Promise<INutritionDoc[] | null> => {
   const nutritions = await Nutrition.find(search ? { $text: { $search: search } } : {})
     .skip(20)
-    .limit(10)
+    .limit(1000)
     .exec();
   return nutritions;
 };

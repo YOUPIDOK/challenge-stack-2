@@ -78,7 +78,7 @@ export default defineComponent({
     };
   },
   async mounted() {
-    const response = await fetch("http://localhost:3000/v1/recipes?limit=1000");
+    const response = await fetch("http://localhost:3000/v1/recipes");
     this.recipes = (await response.json()).results; // Get recipes
   },
 });

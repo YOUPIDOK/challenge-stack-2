@@ -31,20 +31,18 @@ yarn build
 - Page d'accueil
 - Page de listsing des recettes avec fonction de recherche
 - Page d'une recette
+- Page de génération d'une recette aléatoire
 - Page de création d'une recette avec analyse des calories en direct (connexion requise)
 - Connexion / Déconnexion
 
 ## Améliorations
 
 ### Fonctionnalités
-- Page de recette aléatoire
 - CRUD des utilisateurs
 - CRUD des recettes
 - CRUD des ingrédients
-- Variables d'environnement
 
 ### Sécurité
-
 - Utiliser le token de l'utilisateur
 - Utiliser le refresh token pour recharger le token de l'utilisateur quand il n'est plus valide
 - Utiliser une validation de formulaire avant envoi des requètes

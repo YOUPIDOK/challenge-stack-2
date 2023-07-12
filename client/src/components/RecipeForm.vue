@@ -103,7 +103,7 @@ import {
 } from '@headlessui/vue'
 import {searchIngredients} from '../api/ingredientApi';
 import {createRecipe} from "../api/recipeApi";
-import {getKcal} from '../services/recipeService';
+import {getKcal, getRandomRecipe} from '../services/recipeService';
 
 export default {
   name: 'RecipeForm',
@@ -111,6 +111,11 @@ export default {
   props: {
     // Edition or creation
     isCreateMod: {
+      type: Boolean,
+      required: false,
+      default: true,
+    },
+    isRandomMod: {
       type: Boolean,
       required: false,
       default: true,
@@ -141,11 +146,7 @@ export default {
       filteredNutritions.value = await searchIngredients(newQuery);
     })
 
-    const recipe = ref(props.isCreateMod ?
-        defaultRecipe :
-        // Object.assign({}, store.getDonationById(parseInt(props.donationId)))
-        defaultRecipe
-    );
+    const recipe = new ref(defaultRecipe);
     // *************************************
 
     return {
@@ -155,6 +156,19 @@ export default {
       recipe,
       defaultRecipe
     };
+  },
+  async mounted() {
+    if (this.isRandomMod) {
+      // Random mod
+      this.recipe = await getRandomRecipe();
+    } else if (this.isCreateMod) {
+      // Create mod
+      this.recipe = this.defaultRecipe;
+    } else {
+      // Edit mod
+      // recipe = Object.assign({}, store.getDonationById(parseInt(props.donationId)))
+      this.recipe = this.defaultRecipe;
+    }
   },
   computed: {
     kcal() {

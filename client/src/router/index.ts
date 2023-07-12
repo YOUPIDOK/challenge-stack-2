@@ -22,8 +22,13 @@ const routes = [
             },
             {
                 name: 'NewRecipe',
-                path: '/creer-ma-recette',
+                path: '/creer-une-recette',
                 component: () => import('../pages/NewRecipe.vue'),
+            },
+            {
+                name: 'RandomRecipe',
+                path: '/recette-aleatoire',
+                component: () => import('../pages/RandomRecipe.vue'),
             },
             {
                 name: 'Login',

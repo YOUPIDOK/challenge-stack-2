@@ -17,6 +17,7 @@
             <router-link :to="{ name: 'Home' }"  class="text-gray-900 hover:bg-gray-50 hover:text-gray-900 inline-flex items-center rounded-md py-2 px-3 text-sm font-medium" >Accueil</router-link>
             <router-link :to="{ name: 'Recipes' }"  class="text-gray-900 hover:bg-gray-50 hover:text-gray-900 inline-flex items-center rounded-md py-2 px-3 text-sm font-medium" >Les recettes</router-link>
             <router-link :to="{ name: 'NewRecipe' }" v-if="store.user !== null " class="text-gray-900 hover:bg-gray-50 hover:text-gray-900 inline-flex items-center rounded-md py-2 px-3 text-sm font-medium" >Créer ma recette</router-link>
+            <router-link :to="{ name: 'RandomRecipe' }" v-if="store.user !== null " class="text-gray-900 hover:bg-gray-50 hover:text-gray-900 inline-flex items-center rounded-md py-2 px-3 text-sm font-medium" >Recette aléatoire</router-link>
         </nav>
         <div class="flex items-center">
           <router-link :to="{ name: 'Login' }" v-if="store.user === null" class="text-gray-900 hover:bg-gray-50 hover:text-gray-900 inline-flex items-center rounded-md py-2 px-3 text-sm font-medium">Connexion</router-link>
@@ -31,6 +32,7 @@
         <router-link :to="{ name: 'Home' }"  class="text-gray-900 hover:bg-gray-50 hover:text-gray-900 block rounded-md py-2 px-3 text-base font-medium" >Accueil</router-link>
         <router-link :to="{ name: 'Recipes' }"  class="text-gray-900 hover:bg-gray-50 hover:text-gray-900 block rounded-md py-2 px-3 text-base font-medium" >Les recettes</router-link>
         <router-link :to="{ name: 'NewRecipe' }" v-if="store.user !== null " class="text-gray-900 hover:bg-gray-50 hover:text-gray-900 block rounded-md py-2 px-3 text-base font-medium" >Créer ma recette</router-link>
+        <router-link :to="{ name: 'RandomRecipe' }" v-if="store.user !== null " class="text-gray-900 hover:bg-gray-50 hover:text-gray-900 block rounded-md py-2 px-3 text-base font-medium" >Recette aléatoire</router-link>
       </div>
     </DisclosurePanel>
   </Disclosure>
