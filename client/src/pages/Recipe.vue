@@ -1,15 +1,15 @@
-<template>
-  titre : {{recipe?.title}}
-</template>
+<template>titre : {{ recipe?.title }}</template>
 
 <script lang="ts">
-import {defineComponent, ref} from 'vue';
-import { getRecipe } from '../api/recipeApi';
+import { defineComponent, ref } from "vue";
+import { getRecipe } from "../api/recipeApi";
+import { IRecipe } from "../models/recipe/recipe";
+
 export default defineComponent({
-  name: 'Recipes',
+  name: "Recipes",
   setup() {
     return {
-      recipe: ref({}),
+      recipe: ref<IRecipe>(),
     };
   },
   async mounted() {

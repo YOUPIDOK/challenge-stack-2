@@ -11,9 +11,6 @@ export async function createRecipe({recipe}: { recipe: any }) {
         delete ingredient.nutrition.id;
     });
 
-    // TODO : get author from auth
-    recipe.author = "5f9c0b9b9b9b9b9b9b9b9b9b"
-
     recipe.publication_date = moment().format('YYYY-MM-DD')
 
     return await axios.post(urn, recipe).then((res) => res.data);

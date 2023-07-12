@@ -85,6 +85,7 @@
 <script>
 import {ref, watch} from 'vue'
 import { CheckIcon, ChevronUpDownIcon } from '@heroicons/vue/20/solid'
+import {authStore} from "../stores/auth";
 
 import {
   Combobox,
@@ -97,6 +98,7 @@ import {
 import {searchIngredients} from '../api/ingredientApi';
 import {createRecipe} from "../api/recipeApi";
 import {getKcal} from '../services/recipeService';
+
 export default {
   name: 'RecipeForm',
   components: {ComboboxLabel, Combobox, ComboboxInput, ComboboxButton, ComboboxOptions, ComboboxOption, CheckIcon, ChevronUpDownIcon},
@@ -112,12 +114,16 @@ export default {
     },
   },
   setup(props) {
+    const store = authStore();
+
     const defaultRecipe = {
       title: "",
       description: "",
+      author: store.user.id,
       ingredients: [],
       steps: [],
     };
+
     const query = ref('');
     const selectedNutrition = ref(null);
     let filteredNutritions = ref([]);
