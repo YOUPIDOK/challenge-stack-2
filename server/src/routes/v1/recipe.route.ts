@@ -30,7 +30,7 @@ export default router;
  * /recipes:
  *   post:
  *     summary: Create a recipe
- *     description: Only admins can create other recipes.
+ *     description: Only users can create other recipes.
  *     tags: [Recipes]
  *     security:
  *       - bearerAuth: []
