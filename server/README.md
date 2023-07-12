@@ -142,7 +142,7 @@ yarn create:user
 ### Documentation
 
 - docs (swagger) (http://localhost:3000/v1/docs) - Seulement en mode développement
-[![name](../documentation/Capture%20d%E2%80%99%C3%A9cran%202023-07-12%20%C3%A0%2015.58.05.png)]
+  [![name](../documentation/Capture%20d%E2%80%99%C3%A9cran%202023-07-12%20%C3%A0%2015.58.05.png)]
 
 ### Methodes calculées
 
@@ -203,3 +203,20 @@ logger.debug('message'); // Niveau 5
 - Ajouter des tests
 - Ajouter des plus de fixtures pour le dev
 - Ajouter les routes pour les admins
+
+## Structure du dossier src
+
+```
+src
+├── config
+├── db
+├── modules
+|   ├── *
+|   |   ├── controller
+|   |   ├── model
+|   |   ├── router
+|   |   ├── service
+|   |   ├── test
+|   |   └── validation
+├── routes
+```
