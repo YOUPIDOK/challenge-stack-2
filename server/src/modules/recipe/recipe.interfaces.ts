@@ -1,6 +1,6 @@
 import { Model, Document } from 'mongoose';
 import { QueryResult } from '../paginate/paginate';
-import { IIngredientModel } from './ingredient/ingredient.interfaces';
+import { IIngredient } from './ingredient/ingredient.interfaces';
 import { IStepModel } from './step/step.interfaces';
 
 export interface IRecipe {
@@ -9,7 +9,7 @@ export interface IRecipe {
   image: string;
   author: string;
   publication_date: Date;
-  ingredients: Array<IIngredientModel>;
+  ingredients: Array<IIngredient>;
   steps: Array<IStepModel>;
 }
 
