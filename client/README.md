@@ -44,6 +44,20 @@ yarn build
 - Connexion / Déconnexion
 - Sécurité des routes avec authentification
 - Système de messages flash pour informer l'utilisateur
+
+## Structure du dossier src
+```
+src
+├── api                             // Service API pour communiquer avec le server 
+├── components                      // Composants réutilisables (form, button, ...)
+├── layouts                         // Layouts de l'application 
+├── models                          // Modèles de données (interfaces)
+├── pages                           // Pages de l'application (routes)
+├── router                          // Router de l'application (vue-router)
+├── services                        // Services de l'application (search, ...)
+├── stores                          // Stores de l'application (pinia)
+```
+
 ## Améliorations
 
 ### Fonctionnalités
