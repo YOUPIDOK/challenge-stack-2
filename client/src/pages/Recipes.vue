@@ -16,31 +16,27 @@
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       <article v-for="recipe in filteredRecipes" :key="recipe.id" class="group">
         <RouterLink :to="{ name: 'Recipe', params: { id: recipe.id } }">
+          <img
+            alt="Lava"
+            :src="recipe.image"
+            class="h-56 w-full rounded-xl object-cover shadow-xl transition group-hover:grayscale-[50%]"
+          />
 
-        <img
-          alt="Lava"
-          :src="recipe.image"
-          class="h-56 w-full rounded-xl object-cover shadow-xl transition group-hover:grayscale-[50%]"
-        />
-
-        <div class="p-4">
+          <div class="p-4">
             <h3 class="text-lg font-medium text-gray-900">
               {{ recipe.title }}
             </h3>
 
-          <p class="mt-2 line-clamp-3 text-sm/relaxed text-gray-500">
-            {{ recipe.description }}
-          </p>
+            <p class="mt-2 line-clamp-3 text-sm/relaxed text-gray-500">
+              {{ recipe.description }}
+            </p>
 
-          <span class="text-gray-500">
-            Calories :
-            {{
-              getKcal(recipe)
-            }} Kcal
-          </span>
-        </div>
+            <span class="text-gray-500">
+              Calories :
+              {{ getKcal(recipe) }} Kcal
+            </span>
+          </div>
         </RouterLink>
-
       </article>
     </div>
   </div>
@@ -51,10 +47,11 @@ import { computed, defineComponent, ref } from "vue";
 import { IRecipe } from "../models/recipe/recipe";
 import { RouterLink } from "vue-router";
 import { getKcal } from "../services/recipeService";
+import { getRecipes } from "../api/recipeApi";
 
 export default defineComponent({
   name: "Recipes",
-  methods: {getKcal},
+  methods: { getKcal },
   components: { RouterLink },
   setup() {
     const searchQuery = ref("");
@@ -77,8 +74,7 @@ export default defineComponent({
     };
   },
   async mounted() {
-    const response = await fetch("http://localhost:3000/v1/recipes?limit=1000");
-    this.recipes = (await response.json()).results;
+    this.recipes = await getRecipes();
   },
 });
 </script>

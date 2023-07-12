@@ -26,3 +26,13 @@ export async function getRecipe(id: string) {
     return response.data;
   });
 }
+
+/**
+ * Retrieve all recipes
+ * @param id
+ */
+export async function getRecipes() {
+  return await axios.get(url + "?limit=1000").then((response) => {
+    return response.data.results;
+  });
+}
