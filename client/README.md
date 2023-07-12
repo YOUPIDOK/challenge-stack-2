@@ -10,11 +10,20 @@
 
 ## Installation
 
-```shell
+Installation des dépendances:
+
+```bash
 yarn install
 ```
 
+Variables d'environment
+
+```bash
+cp .env.example .env
+```
+
 ### Développement
+
 ```shell
 yarn dev
 ```
@@ -49,5 +58,6 @@ yarn build
 - Ne pas laisser l'accès à la page création de recette si non connecté
 
 ### Ux
+
 - Système de message flash
 - Pagination des recettes
