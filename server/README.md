@@ -141,7 +141,7 @@ yarn create:user
 ### Documentation
 
 - docs (swagger) (http://localhost:3000/v1/docs) - Seulement en mode développement
-[![name](../documentation/Capture d’écran 2023-07-12 à 15.58.05.png)]
+[![name](https://github.com/YOUPIDOK/challenge-stack-2/blob/main/documentation/Capture%20d%E2%80%99%C3%A9cran%202023-07-12%20%C3%A0%2015.58.05.png)]
 
 ### Message d'erreur
 
